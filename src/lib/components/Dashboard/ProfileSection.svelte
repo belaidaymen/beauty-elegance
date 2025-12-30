@@ -31,7 +31,10 @@
 
 <div class="profile-section">
 	<div class="section-header">
-		<h2>Mon Profil</h2>
+		<div>
+			<h1 class="page-title">Mon Profil</h1>
+			<p class="page-subtitle">Gérez vos informations personnelles</p>
+		</div>
 		{#if !isEditing}
 			<button class="edit-btn" on:click={handleEdit}>Modifier</button>
 		{/if}
@@ -40,7 +43,7 @@
 	{#if $user}
 		{#if isEditing}
 			<form class="profile-form" on:submit|preventDefault={handleSave}>
-				<div class="form-group-two-cols">
+				<div class="form-row-two">
 					<div class="form-group">
 						<label for="firstName">Prénom</label>
 						<input
@@ -76,7 +79,7 @@
 					<input id="address" type="text" bind:value={formData.address} required />
 				</div>
 
-				<div class="form-group-three-cols">
+				<div class="form-row-three">
 					<div class="form-group">
 						<label for="city">Ville</label>
 						<input id="city" type="text" bind:value={formData.city} required />
@@ -97,158 +100,172 @@
 				</div>
 			</form>
 		{:else}
-			<div class="profile-info">
-				<div class="info-card">
-					<div class="info-group">
-						<div class="info-item">
+			<div class="profile-display">
+				<div class="profile-grid">
+					<div class="info-section">
+						<h3 class="section-title">Informations Personnelles</h3>
+						<div class="info-row">
 							<span class="label">Prénom</span>
 							<span class="value">{$user.firstName}</span>
 						</div>
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">Nom</span>
 							<span class="value">{$user.lastName}</span>
 						</div>
-					</div>
-
-					<div class="info-group">
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">E-mail</span>
 							<span class="value">{$user.email}</span>
 						</div>
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">Téléphone</span>
 							<span class="value">{$user.phone}</span>
 						</div>
 					</div>
 
-					<div class="info-group">
-						<div class="info-item full-width">
+					<div class="info-section">
+						<h3 class="section-title">Adresse de Livraison</h3>
+						<div class="info-row">
 							<span class="label">Adresse</span>
 							<span class="value">{$user.address}</span>
 						</div>
-					</div>
-
-					<div class="info-group">
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">Ville</span>
 							<span class="value">{$user.city}</span>
 						</div>
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">Code Postal</span>
 							<span class="value">{$user.postalCode}</span>
 						</div>
-						<div class="info-item">
+						<div class="info-row">
 							<span class="label">Pays</span>
 							<span class="value">{$user.country}</span>
 						</div>
 					</div>
-				</div>
 
-				<div class="account-info-card">
-					<h3>Informations du Compte</h3>
-					<div class="account-info-item">
-						<span class="label">Nom d'utilisateur</span>
-						<span class="value">{$user.username}</span>
-					</div>
-					<div class="account-info-item">
-						<span class="label">Membre depuis</span>
-						<span class="value">{new Date($user.createdAt).toLocaleDateString('fr-FR')}</span>
-					</div>
-					<div class="account-info-item">
-						<span class="label">Dernière mise à jour</span>
-						<span class="value">{new Date($user.updatedAt).toLocaleDateString('fr-FR')}</span>
+					<div class="info-section">
+						<h3 class="section-title">Informations du Compte</h3>
+						<div class="info-row">
+							<span class="label">Membre depuis</span>
+							<span class="value">{new Date($user.createdAt).toLocaleDateString('fr-FR')}</span>
+						</div>
+						<div class="info-row">
+							<span class="label">Dernière mise à jour</span>
+							<span class="value">{new Date($user.updatedAt).toLocaleDateString('fr-FR')}</span>
+						</div>
 					</div>
 				</div>
 			</div>
 		{/if}
-	{:else}
-		<p class="no-data">Aucune information utilisateur disponible.</p>
 	{/if}
 </div>
 
 <style>
 	.profile-section {
-		background: #fff;
-		border-radius: 8px;
-		padding: 2.5rem;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		animation: fadeIn 0.4s ease;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 
 	.section-header {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 2rem;
-		border-bottom: 2px solid #f0d9d9;
-		padding-bottom: 1.5rem;
+		align-items: flex-start;
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 0.1rem solid #f0d9d9;
 	}
 
-	.section-header h2 {
-		font-family: 'Abril Fatface';
-		font-size: 2.8rem;
+	.page-title {
+		font-family: 'Abril Fatface', serif;
+		font-size: 3.2rem;
 		color: #333;
+		margin: 0 0 0.5rem 0;
+		font-weight: 400;
+		letter-spacing: 0.02rem;
+	}
+
+	.page-subtitle {
+		font-size: 1.5rem;
+		color: #999;
 		margin: 0;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02rem;
 	}
 
 	.edit-btn {
-		background: #f1dada;
-		border: none;
-		padding: 1rem 2rem;
-		font-size: 1.5rem;
-		border-radius: 8px;
+		background: none;
+		border: 0.1rem solid #f1dada;
+		padding: 0.8rem 2rem;
+		font-size: 1.4rem;
+		color: #b37777;
 		cursor: pointer;
-		transition: 0.3s;
-		font-weight: 500;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02rem;
+		border-radius: 4px;
+		transition: all 0.3s ease;
 	}
 
 	.edit-btn:hover {
-		background: #fff;
-		outline: 2px solid #b37777;
-		color: #b37777;
+		background: #fff9f9;
+		border-color: #b37777;
+		color: #8b5555;
 	}
 
 	.profile-form {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 2.5rem;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.6rem;
 	}
 
 	.form-group label {
-		font-size: 1.6rem;
-		font-weight: 600;
-		color: #333;
+		font-size: 1.4rem;
+		color: #666;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02rem;
+		font-weight: 500;
 	}
 
 	.form-group input {
 		padding: 1rem 1.2rem;
-		border: 1px solid #d0c0c0;
-		border-radius: 6px;
+		border: 0.1rem solid #e8e8e8;
+		border-radius: 4px;
 		font-size: 1.5rem;
-		transition: 0.2s;
+		font-family: 'Open Sans', sans-serif;
+		transition: all 0.3s ease;
+		background: #fff;
 	}
 
 	.form-group input:focus {
 		outline: none;
-		border-color: #b37777;
-		box-shadow: 0 0 0 3px rgba(179, 119, 119, 0.1);
+		border-color: #f1dada;
+		box-shadow: 0 0 0 3px rgba(241, 218, 218, 0.2);
 	}
 
-	.form-group-two-cols {
+	.form-row-two,
+	.form-row-three {
 		display: grid;
+		gap: 1.5rem;
+	}
+
+	.form-row-two {
 		grid-template-columns: 1fr 1fr;
-		gap: 1.5rem;
 	}
 
-	.form-group-three-cols {
-		display: grid;
+	.form-row-three {
 		grid-template-columns: 1fr 1fr 1fr;
-		gap: 1.5rem;
 	}
 
 	.form-actions {
@@ -260,152 +277,129 @@
 	.save-btn,
 	.cancel-btn {
 		padding: 1rem 2.5rem;
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 		border: none;
-		border-radius: 8px;
+		border-radius: 4px;
 		cursor: pointer;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02rem;
+		transition: all 0.3s ease;
+		flex: 1;
 		font-weight: 500;
-		transition: 0.3s;
 	}
 
 	.save-btn {
 		background: #f1dada;
 		color: #333;
-		flex: 1;
+		border: 0.1rem solid #f1dada;
 	}
 
 	.save-btn:hover {
 		background: #fff;
-		outline: 2px solid #b37777;
+		border-color: #b37777;
 		color: #b37777;
 	}
 
 	.cancel-btn {
 		background: #f5f5f5;
-		color: #333;
-		flex: 1;
+		color: #666;
+		border: 0.1rem solid #e8e8e8;
 	}
 
 	.cancel-btn:hover {
-		background: #e8e8e8;
+		background: #f0f0f0;
+		border-color: #d0d0d0;
 	}
 
-	.profile-info {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
+	.profile-display {
+		animation: slideUp 0.4s ease;
 	}
 
-	.info-card {
-		background: #fafafa;
-		border-radius: 8px;
-		padding: 2rem;
-		border: 1px solid #f0d9d9;
+	@keyframes slideUp {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
-	.info-group {
+	.profile-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-		gap: 2rem;
-		margin-bottom: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+		gap: 3rem;
 	}
 
-	.info-group:last-child {
-		margin-bottom: 0;
-	}
-
-	.info-item {
+	.info-section {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 1.5rem;
 	}
 
-	.info-item.full-width {
-		grid-column: 1 / -1;
-	}
-
-	.info-item .label {
-		font-size: 1.4rem;
-		color: #999;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.05rem;
-	}
-
-	.info-item .value {
-		font-size: 1.6rem;
+	.section-title {
+		font-family: 'Andada Pro', serif;
+		font-size: 1.8rem;
 		color: #333;
+		margin: 0 0 1rem 0;
+		padding-bottom: 1rem;
+		border-bottom: 0.1rem solid #f0d9d9;
+		letter-spacing: 0.02rem;
 		font-weight: 500;
 	}
 
-	.account-info-card {
-		background: #f0d9d9;
-		border-radius: 8px;
-		padding: 2rem;
-		border: 1px solid #e0c9c9;
-	}
-
-	.account-info-card h3 {
-		font-family: 'Andada Pro';
-		font-size: 2rem;
-		color: #333;
-		margin: 0 0 1.5rem 0;
-		border-bottom: 2px solid #e0c9c9;
-		padding-bottom: 1rem;
-	}
-
-	.account-info-item {
+	.info-row {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		padding: 1rem 0;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		border-bottom: 0.05rem solid #f5f5f5;
 	}
 
-	.account-info-item:last-child {
+	.info-row:last-child {
 		border-bottom: none;
 	}
 
-	.account-info-item .label {
+	.label {
+		font-size: 1.4rem;
+		color: #999;
+		font-family: 'Andada Pro', serif;
+		font-weight: 500;
+		letter-spacing: 0.02rem;
+	}
+
+	.value {
 		font-size: 1.5rem;
-		color: #666;
+		color: #333;
+		font-family: 'Open Sans', sans-serif;
 		font-weight: 500;
 	}
 
-	.account-info-item .value {
-		font-size: 1.5rem;
-		color: #333;
-		font-weight: 600;
-	}
-
-	.no-data {
-		text-align: center;
-		color: #999;
-		font-size: 1.6rem;
-		padding: 3rem;
-	}
-
 	@media (max-width: 768px) {
-		.profile-section {
-			padding: 1.5rem;
+		.page-title {
+			font-size: 2.4rem;
 		}
 
-		.section-header h2 {
-			font-size: 2.2rem;
+		.profile-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
 		}
 
-		.form-group-two-cols,
-		.form-group-three-cols {
+		.form-row-two,
+		.form-row-three {
 			grid-template-columns: 1fr;
 		}
 
-		.info-group {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
-
-		.account-info-item {
+		.info-row {
 			flex-direction: column;
+			align-items: flex-start;
 			gap: 0.5rem;
+		}
+
+		.section-header {
+			flex-direction: column;
+			gap: 1.5rem;
 		}
 	}
 </style>
