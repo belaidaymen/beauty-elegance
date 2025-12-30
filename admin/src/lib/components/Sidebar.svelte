@@ -77,40 +77,42 @@
 
 <style>
 	.sidebar {
-		width: 25rem;
-		background: linear-gradient(135deg, #f0d9d9 0%, #f5e6e6 100%);
-		border-right: 1px solid #e0c8c8;
+		width: 26rem;
+		background: #faf9f8;
+		border-right: 1px solid #e8e0db;
 		display: flex;
 		flex-direction: column;
-		box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+		box-shadow: 2px 0 10px rgba(0, 0, 0, 0.04);
 		overflow-y: auto;
 		transition: all 0.3s ease;
 	}
 
 	.sidebar-header {
-		padding: 2rem;
-		border-bottom: 2px solid #d1b2b2;
+		padding: 2.5rem 2rem 2rem;
+		border-bottom: 1px solid #e8e0db;
 		text-align: center;
 	}
 
 	.brand-title {
 		font-family: 'Andada Pro', serif;
-		font-size: 2.8rem;
-		font-weight: lighter;
+		font-size: 2.6rem;
+		font-weight: 400;
 		color: #333;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.3rem;
+		letter-spacing: 0.02em;
 	}
 
 	.brand-subtitle {
-		font-size: 1.2rem;
-		color: #888;
-		font-weight: 300;
-		letter-spacing: 0.1rem;
+		font-size: 1.1rem;
+		color: #999;
+		font-weight: 400;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
 	}
 
 	.sidebar-nav {
 		flex: 1;
-		padding: 2rem 0;
+		padding: 1.5rem 0;
 		overflow-y: auto;
 	}
 
@@ -118,46 +120,54 @@
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.3rem;
 	}
 
 	.nav-link {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
-		padding: 1.2rem 2rem;
-		color: #333;
-		transition: all 0.3s ease;
+		gap: 1.2rem;
+		padding: 1rem 1.8rem;
+		color: #666;
+		transition: all 0.2s ease;
 		position: relative;
 		border-left: 3px solid transparent;
+		font-size: 1.4rem;
+		font-weight: 500;
 	}
 
 	.nav-link:hover {
-		background: rgba(209, 178, 178, 0.3);
+		background: rgba(179, 119, 119, 0.08);
+		color: #b37777;
 		border-left-color: #d1b2b2;
 	}
 
 	.nav-link.active {
-		background: rgba(209, 178, 178, 0.5);
+		background: rgba(179, 119, 119, 0.15);
+		color: #b37777;
 		border-left-color: #b37777;
 		font-weight: 600;
 	}
 
 	.nav-icon {
-		font-size: 2rem;
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		flex-shrink: 0;
+		color: currentColor;
 	}
 
 	.nav-label {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 500;
 	}
 
 	.sidebar-footer {
 		padding: 1.5rem 2rem;
-		border-top: 1px solid #d1b2b2;
-		background: rgba(255, 255, 255, 0.5);
+		border-top: 1px solid #e8e0db;
+		background: #fefdfb;
 	}
 
 	.footer-info {
@@ -172,8 +182,8 @@
 
 	.footer-subtext {
 		font-size: 1.1rem;
-		color: #888;
-		margin-top: 0.3rem;
+		color: #999;
+		margin-top: 0.4rem;
 	}
 
 	.mobile-toggle {
@@ -182,20 +192,27 @@
 		top: 1rem;
 		left: 1rem;
 		z-index: 1000;
-		background: #f0d9d9;
+		background: #fff;
 		border: 2px solid #d1b2b2;
-		border-radius: 0.4rem;
+		border-radius: 0.6rem;
 		padding: 0.8rem 1rem;
-		font-size: 2rem;
-		color: #333;
+		font-size: 1.8rem;
+		color: #b37777;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.mobile-toggle:hover {
+		background: #f9f8f8;
+		border-color: #b37777;
 	}
 
 	.sidebar-overlay {
 		display: none;
 		position: fixed;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.4);
 		z-index: 499;
 	}
 
@@ -208,6 +225,7 @@
 			z-index: 500;
 			transform: translateX(-100%);
 			transition: transform 0.3s ease;
+			width: 70vw;
 		}
 
 		.sidebar.mobile-open {
@@ -233,11 +251,17 @@
 		}
 
 		.nav-link {
-			padding: 1rem 1.5rem;
+			padding: 0.9rem 1.5rem;
+			gap: 1rem;
 		}
 
 		.nav-label {
 			font-size: 1.3rem;
+		}
+
+		.nav-icon {
+			width: 2.2rem;
+			height: 2.2rem;
 		}
 	}
 </style>
