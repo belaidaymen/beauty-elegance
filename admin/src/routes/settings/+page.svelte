@@ -119,9 +119,9 @@
 					/>
 				</div>
 
-				<FormInput label="Email Address" type="email" bind:value={profileForm.email} />
+				<FormInput label="Email Address" inputType="email" bind:value={profileForm.email} />
 
-				<FormInput label="Phone Number" type="tel" bind:value={profileForm.phone} />
+				<FormInput label="Phone Number" inputType="tel" bind:value={profileForm.phone} />
 
 				<div class="form-group">
 					<label class="form-label">Position/Role</label>
@@ -161,13 +161,13 @@
 				/>
 
 				<div class="form-row">
-					<FormInput label="Email Address" type="email" bind:value={storeSettings.email} />
-					<FormInput label="Phone Number" type="tel" bind:value={storeSettings.phone} />
+					<FormInput label="Email Address" inputType="email" bind:value={storeSettings.email} />
+					<FormInput label="Phone Number" inputType="tel" bind:value={storeSettings.phone} />
 				</div>
 
 				<FormInput
 					label="Website URL"
-					type="url"
+					inputType="url"
 					placeholder="https://..."
 					bind:value={storeSettings.website}
 				/>
@@ -310,19 +310,19 @@
 
 					<FormInput
 						label="Current Password"
-						type="password"
+						inputType="password"
 						placeholder="Enter current password"
 					/>
 
 					<FormInput
 						label="New Password"
-						type="password"
+						inputType="password"
 						placeholder="Enter new password"
 					/>
 
 					<FormInput
 						label="Confirm New Password"
-						type="password"
+						inputType="password"
 						placeholder="Confirm new password"
 					/>
 
