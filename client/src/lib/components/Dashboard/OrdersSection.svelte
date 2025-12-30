@@ -484,40 +484,52 @@
 	}
 
 	.items-section {
-		margin: 3rem 0;
+		margin: 4rem 0;
 	}
 
 	.section-title {
 		font-family: 'Andada Pro', serif;
-		font-size: 1.8rem;
-		color: #333;
-		margin: 0 0 2rem 0;
-		padding-bottom: 1rem;
-		border-bottom: 0.1rem solid #f0d9d9;
-		letter-spacing: 0.02rem;
+		font-size: 1.9rem;
+		color: #2a2a2a;
+		margin: 0 0 2.5rem 0;
+		padding-bottom: 1.5rem;
+		border-bottom: 2px solid #f0d9d9;
+		letter-spacing: 0.02em;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 1.6rem;
 	}
 
 	.items-list {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 2rem;
 	}
 
 	.item-row {
 		display: flex;
-		gap: 1.5rem;
-		padding: 1.5rem;
-		background: #fafafa;
-		border-radius: 6px;
+		gap: 2rem;
+		padding: 2rem;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 217, 217, 0.1));
+		border-radius: 1rem;
 		align-items: flex-start;
+		border: 1px solid #f0d9d9;
+		transition: all 0.3s ease;
+	}
+
+	.item-row:hover {
+		border-color: #d1b2b2;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 217, 217, 0.15));
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 	}
 
 	.item-image {
-		width: 8rem;
-		height: 8rem;
+		width: 9rem;
+		height: 9rem;
 		object-fit: cover;
-		border-radius: 4px;
+		border-radius: 0.8rem;
 		flex-shrink: 0;
+		border: 1px solid #f0d9d9;
 	}
 
 	.item-info {
@@ -526,15 +538,16 @@
 
 	.item-name {
 		font-family: 'Andada Pro', serif;
-		font-size: 1.6rem;
-		color: #333;
-		margin: 0 0 0.5rem 0;
-		letter-spacing: 0.02rem;
+		font-size: 1.8rem;
+		color: #2a2a2a;
+		margin: 0 0 0.7rem 0;
+		letter-spacing: 0.02em;
+		font-weight: 700;
 	}
 
 	.item-desc {
-		font-size: 1.3rem;
-		color: #999;
+		font-size: 1.4rem;
+		color: #888;
 		margin: 0;
 	}
 
@@ -542,34 +555,37 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		gap: 0.5rem;
+		gap: 0.8rem;
 	}
 
 	.qty {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		color: #666;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.price {
 		font-family: 'Andada Pro', serif;
-		font-size: 1.6rem;
-		font-weight: 600;
-		color: #333;
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: #b37777;
 	}
 
 	.summary-section {
-		background: #f9f7f5;
-		padding: 2rem;
-		border-radius: 6px;
-		margin: 2rem 0;
+		background: linear-gradient(135deg, rgba(240, 217, 217, 0.15), rgba(255, 255, 255, 0.5));
+		padding: 2.5rem;
+		border-radius: 1rem;
+		margin: 3rem 0;
+		border: 2px solid #f0d9d9;
 	}
 
 	.summary-row {
 		display: flex;
 		justify-content: space-between;
-		padding: 1rem 0;
+		padding: 1.2rem 0;
 		font-size: 1.5rem;
-		border-bottom: 0.05rem solid #f0d9d9;
+		border-bottom: 1px solid rgba(240, 217, 217, 0.6);
+		font-family: 'Andada Pro', serif;
 	}
 
 	.summary-row:last-child {
@@ -577,38 +593,40 @@
 	}
 
 	.summary-row.total {
-		font-weight: 600;
-		font-size: 1.8rem;
-		color: #333;
-		padding-top: 1rem;
-		border-top: 0.1rem solid #e8e8e8;
+		font-weight: 700;
+		font-size: 2rem;
+		color: #2a2a2a;
+		padding-top: 1.5rem;
+		border-top: 2px solid #e8d4d4;
 	}
 
 	.shipping-section {
-		margin: 2rem 0;
+		margin: 3rem 0;
 	}
 
 	.address-box {
-		background: #fafafa;
-		padding: 1.5rem;
-		border-radius: 6px;
-		border: 0.1rem solid #f0d9d9;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 217, 217, 0.1));
+		padding: 2rem;
+		border-radius: 1rem;
+		border: 2px solid #f0d9d9;
 	}
 
 	.address-box p {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		color: #666;
-		margin: 0.5rem 0;
-		line-height: 1.6;
+		margin: 0.7rem 0;
+		line-height: 1.8;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.address-box p:first-child {
-		color: #333;
-		font-weight: 600;
+		color: #2a2a2a;
+		font-weight: 700;
+		font-size: 1.7rem;
 	}
 
 	.invoice-view {
-		animation: slideUp 0.4s ease;
+		animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	@media (max-width: 768px) {
