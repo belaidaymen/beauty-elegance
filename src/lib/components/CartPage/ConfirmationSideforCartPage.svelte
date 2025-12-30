@@ -7,6 +7,7 @@
 	import FeaturesContainer from '$lib/components/FeaturesContainer.svelte';
 	import MediaQuery from 'svelte-media-queries';
 	import { initialPrice } from '$lib/stores/total_price_cart_store';
+	import { goto } from '$app/navigation';
 
 	let totalPrice = 0;
 
