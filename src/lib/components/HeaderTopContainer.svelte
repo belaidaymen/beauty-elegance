@@ -6,6 +6,7 @@
 	import MediaQuery from 'svelte-media-queries';
 	import { shouldVerticalNavbarAppear } from '$lib/stores/navbar_visibility_store';
 	import { shouldCartSidebarAppear } from '$lib/stores/cart_visibility_store';
+	import { isAuthenticated } from '$lib/stores/user_store';
 
 	export let brownBackground = false;
 </script>
