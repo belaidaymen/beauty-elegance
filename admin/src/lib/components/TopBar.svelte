@@ -27,7 +27,7 @@
 
 <div class="topbar">
 	<div class="topbar-left">
-		<h1 class="page-title">Dashboard</h1>
+		<h1 class="page-title">{getTitleFromPath($page.url.pathname)}</h1>
 	</div>
 
 	<div class="topbar-right">
