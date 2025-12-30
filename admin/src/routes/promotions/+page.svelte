@@ -462,52 +462,64 @@
 
 <style>
 	.promotions-container {
-		padding: 2rem;
-		max-width: 1600px;
+		padding: 3rem 2.5rem;
+		max-width: 1800px;
 		margin: 0 auto;
+		background: linear-gradient(135deg, #faf9f8 0%, #fdfbf9 100%);
+		min-height: 100vh;
 	}
 
 	.page-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: start;
-		margin-bottom: 2rem;
+		margin-bottom: 3.5rem;
 		gap: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 2px solid var(--primary-lighter);
 	}
 
 	.page-title {
-		font-family: 'Andada Pro';
-		font-size: 3rem;
-		font-weight: 600;
-		color: #333;
+		font-family: 'Abril Fatface', serif;
+		font-size: 3.6rem;
+		font-weight: 400;
+		color: #2a2a2a;
 		margin-bottom: 0.5rem;
+		letter-spacing: -0.01em;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.page-subtitle {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		color: #888;
+		font-family: 'Andada Pro', serif;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	.promo-stats {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-		gap: 1.5rem;
-		margin-bottom: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+		gap: 2rem;
+		margin-bottom: 3.5rem;
 	}
 
 	.stat-card {
-		background: #fff;
-		border-radius: 0.8rem;
-		padding: 1.5rem;
-		border-left: 4px solid #d1b2b2;
+		background: linear-gradient(135deg, #fff 0%, #fefdfb 100%);
+		border-radius: 1.2rem;
+		padding: 2rem;
+		border-left: 5px solid #d1b2b2;
 		text-align: center;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+		transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	.stat-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+		transform: translateY(-6px);
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 	}
 
 	.stat-card.active {
@@ -527,18 +539,19 @@
 	}
 
 	.stat-title {
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 		color: #888;
 		text-transform: uppercase;
-		letter-spacing: 0.05rem;
-		font-weight: 600;
-		margin-bottom: 0.8rem;
+		letter-spacing: 0.1em;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.stat-count {
 		font-size: 2.8rem;
 		font-weight: 700;
-		color: #333;
+		color: #2a2a2a;
 	}
 
 	.status-badge {
