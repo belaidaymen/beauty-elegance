@@ -39,7 +39,11 @@
 					{/if}
 				</MediaQuery>
 				<div class="right-icons-container icons-container">
-					<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+					{#if $isAuthenticated}
+						<a href="/dashboard" class="login-btn" title="Dashboard"><img src={loginIcon} alt="dashboard" /></a>
+					{:else}
+						<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+					{/if}
 					<button on:click={() => ($shouldCartSidebarAppear = true)} class="shopping-cart-btn"
 						><img src={cartIcon} alt="shopping-cart" /></button
 					>
