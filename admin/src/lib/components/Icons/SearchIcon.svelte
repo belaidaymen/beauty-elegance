@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let size: number = 24;
 	export let color: string = 'currentColor';
-	export let strokeWidth: number = 2;
+	export let strokeWidth: number = 1.5;
 </script>
 
 <svg

@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let size: number = 24;
 	export let color: string = 'currentColor';
-	export let strokeWidth: number = 2;
+	export let strokeWidth: number = 1.5;
 </script>
 
 <svg
@@ -16,8 +16,8 @@
 	stroke-linejoin="round"
 	class="icon"
 >
-	<polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
-	<polyline points="23 18 23 12 17 12" />
+	<polyline points="23 18 13.46 8.46 8 13.92 1 7" />
+	<polyline points="23 18 23 8 13 8" />
 </svg>
 
 <style>

@@ -16,8 +16,9 @@
 	stroke-linejoin="round"
 	class="icon"
 >
-	<path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-	<path d="M12 12L8 9M12 12l4 3M8 9v3l4 3M16 12v3l-4-3" />
+	<circle cx="9" cy="21" r="1" />
+	<circle cx="20" cy="21" r="1" />
+	<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
 </svg>
 
 <style>

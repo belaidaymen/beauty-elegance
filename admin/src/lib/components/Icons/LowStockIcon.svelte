@@ -16,9 +16,10 @@
 	stroke-linejoin="round"
 	class="icon"
 >
-	<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3.05h16.94a2 2 0 0 0 1.71-3.05L13.71 3.86a2 2 0 0 0-3.42 0z" />
-	<line x1="12" y1="9" x2="12" y2="13" />
-	<line x1="12" y1="17" x2="12.01" y2="17" />
+	<path d="M2 8c0-1 .895-2 2-2h16c1.105 0 2 .895 2 2v3H2V8z" />
+	<rect x="2" y="11" width="20" height="8" rx="1" />
+	<path d="M6 19v2M10 19v2M14 19v2M18 19v2" stroke-width={strokeWidth} />
+	<path d="M8 15h8" stroke-width={strokeWidth} />
 </svg>
 
 <style>

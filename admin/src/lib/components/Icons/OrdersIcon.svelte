@@ -16,11 +16,8 @@
 	stroke-linejoin="round"
 	class="icon"
 >
-	<path d="M9 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8" />
-	<polyline points="9 2 9 8 15 8" />
-	<line x1="7" y1="10" x2="17" y2="10" />
-	<line x1="7" y1="14" x2="17" y2="14" />
-	<line x1="7" y1="18" x2="17" y2="18" />
+	<path d="M9 11l3 3L22 4" />
+	<path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 
 <style>
