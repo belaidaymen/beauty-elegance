@@ -25,7 +25,7 @@
 </script>
 
 <div class="table-container">
-	<table class="data-table" class:striped class:hoverable}>
+	<table class="data-table" class:striped class:hoverable>
 		<thead>
 			<tr>
 				<th class="checkbox-col">
