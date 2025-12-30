@@ -65,7 +65,7 @@
 			</span>
 		</div>
 
-		<button class="validation">VALIDER LA COMMANDE</button>
+		<button class="validation" on:click={goToOrderPage}>VALIDER LA COMMANDE</button>
 	</div>
 </div>
 
