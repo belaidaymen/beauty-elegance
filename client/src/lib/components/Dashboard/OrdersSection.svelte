@@ -195,26 +195,31 @@
 	}
 
 	.section-header {
-		margin-bottom: 3rem;
-		padding-bottom: 2rem;
-		border-bottom: 0.1rem solid #f0d9d9;
+		margin-bottom: 4rem;
+		padding-bottom: 2.5rem;
+		border-bottom: 2px solid #f0d9d9;
 	}
 
 	.page-title {
 		font-family: 'Abril Fatface', serif;
-		font-size: 3.2rem;
-		color: #333;
-		margin: 0 0 0.5rem 0;
+		font-size: 3.4rem;
+		color: #2a2a2a;
+		margin: 0 0 0.6rem 0;
 		font-weight: 400;
-		letter-spacing: 0.02rem;
+		letter-spacing: -0.01rem;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.page-subtitle {
-		font-size: 1.5rem;
-		color: #999;
+		font-size: 1.6rem;
+		color: #888;
 		margin: 0;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.02rem;
+		font-weight: 500;
 	}
 
 	.empty-state {
