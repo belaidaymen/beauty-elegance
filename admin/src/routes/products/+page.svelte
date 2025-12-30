@@ -223,13 +223,13 @@
 
 	<FormInput
 		label="Price (DZD)"
-		type="number"
+		inputType="number"
 		placeholder="0"
 		bind:value={formData.price}
 		required
 	/>
 
-	<FormInput label="Stock Quantity" type="number" placeholder="0" bind:value={formData.stock} required />
+	<FormInput label="Stock Quantity" inputType="number" placeholder="0" bind:value={formData.stock} required />
 
 	<div class="form-group">
 		<label class="form-label">Status <span class="required">*</span></label>
@@ -273,13 +273,13 @@
 
 	<FormInput
 		label="Price (DZD)"
-		type="number"
+		inputType="number"
 		placeholder="0"
 		bind:value={formData.price}
 		required
 	/>
 
-	<FormInput label="Stock Quantity" type="number" placeholder="0" bind:value={formData.stock} required />
+	<FormInput label="Stock Quantity" inputType="number" placeholder="0" bind:value={formData.stock} required />
 
 	<div class="form-group">
 		<label class="form-label">Status <span class="required">*</span></label>

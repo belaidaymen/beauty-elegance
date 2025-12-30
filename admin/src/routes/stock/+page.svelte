@@ -272,7 +272,7 @@
 
 			<FormInput
 				label="Quantity to Add"
-				type="number"
+				inputType="number"
 				placeholder="0"
 				bind:value={restockQuantity}
 				required

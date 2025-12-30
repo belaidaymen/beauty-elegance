@@ -359,13 +359,13 @@
 	<div class="form-row">
 		<FormInput
 			label="Start Date"
-			type="date"
+			inputType="date"
 			bind:value={formData.startDate}
 			required
 		/>
 		<FormInput
 			label="End Date"
-			type="date"
+			inputType="date"
 			bind:value={formData.endDate}
 			required
 		/>
@@ -433,13 +433,13 @@
 	<div class="form-row">
 		<FormInput
 			label="Start Date"
-			type="date"
+			inputType="date"
 			bind:value={formData.startDate}
 			required
 		/>
 		<FormInput
 			label="End Date"
-			type="date"
+			inputType="date"
 			bind:value={formData.endDate}
 			required
 		/>
