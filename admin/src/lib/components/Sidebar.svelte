@@ -85,7 +85,7 @@
 	}
 
 	.brand-title {
-		font-family: 'MoonTime';
+		font-family: 'Andada Pro', serif;
 		font-size: 2.8rem;
 		font-weight: lighter;
 		color: #333;
