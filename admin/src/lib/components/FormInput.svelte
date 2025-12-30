@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let label: string = '';
-	export let type: string = 'text';
+	export let inputType: string = 'text';
 	export let value: string | number = '';
 	export let placeholder: string = '';
 	export let required: boolean = false;
@@ -19,7 +19,7 @@
 	{/if}
 	<input
 		{id}
-		{type}
+		type={inputType}
 		bind:value
 		{placeholder}
 		{required}
