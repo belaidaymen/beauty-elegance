@@ -7,6 +7,7 @@
 	import FeaturesContainer from '$lib/components/FeaturesContainer.svelte';
 	import MediaQuery from 'svelte-media-queries';
 	import { initialPrice } from '$lib/stores/total_price_cart_store';
+	import { goto } from '$app/navigation';
 
 	let totalPrice = 0;
 
@@ -25,6 +26,10 @@
 			}
 		});
 		return totalPrice;
+	}
+
+	function goToOrderPage() {
+		goto('/commande');
 	}
 </script>
 
@@ -60,7 +65,7 @@
 			</span>
 		</div>
 
-		<button class="validation">VALIDER LA COMMANDE</button>
+		<button class="validation" on:click={goToOrderPage}>VALIDER LA COMMANDE</button>
 	</div>
 </div>
 
