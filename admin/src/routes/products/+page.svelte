@@ -297,113 +297,140 @@
 
 <style>
 	.products-container {
-		padding: 2rem;
-		max-width: 1600px;
+		padding: 3rem 2.5rem;
+		max-width: 1800px;
 		margin: 0 auto;
+		background: linear-gradient(135deg, #faf9f8 0%, #fdfbf9 100%);
+		min-height: 100vh;
 	}
 
 	.page-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: start;
-		margin-bottom: 2rem;
+		margin-bottom: 3.5rem;
 		gap: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 2px solid var(--primary-lighter);
 	}
 
 	.page-title {
-		font-family: 'Andada Pro';
-		font-size: 3rem;
-		font-weight: 600;
-		color: #333;
+		font-family: 'Abril Fatface', serif;
+		font-size: 3.6rem;
+		font-weight: 400;
+		color: #2a2a2a;
 		margin-bottom: 0.5rem;
+		letter-spacing: -0.01em;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.page-subtitle {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		color: #888;
+		font-family: 'Andada Pro', serif;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	.status-badge {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem 1rem;
-		border-radius: 2rem;
-		font-size: 1.2rem;
+		padding: 0.7rem 1.3rem;
+		border-radius: 0.7rem;
+		font-size: 1.3rem;
 		font-weight: 600;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02em;
+		backdrop-filter: blur(10px);
+		border: 1px solid transparent;
 	}
 
 	.status-active {
-		background: rgba(39, 174, 96, 0.2);
-		color: #27ae60;
+		background: rgba(39, 174, 96, 0.12);
+		color: #1d6b3c;
+		border-color: rgba(39, 174, 96, 0.3);
 	}
 
 	.status-inactive {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.12);
+		color: #8a3a3a;
+		border-color: rgba(201, 68, 68, 0.3);
 	}
 
 	.status-low-stock {
-		background: rgba(243, 156, 18, 0.2);
-		color: #f39c12;
+		background: rgba(243, 156, 18, 0.12);
+		color: #b87c0f;
+		border-color: rgba(243, 156, 18, 0.3);
 	}
 
 	.status-out-of-stock {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.12);
+		color: #8a3a3a;
+		border-color: rgba(201, 68, 68, 0.3);
 	}
 
 	.action-buttons {
 		display: flex;
-		gap: 0.5rem;
+		gap: 1rem;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
+		gap: 0.8rem;
+		margin-bottom: 2rem;
 	}
 
 	.form-label {
-		font-size: 1.4rem;
-		font-weight: 600;
+		font-size: 1.5rem;
+		font-weight: 700;
 		color: #333;
+		text-transform: uppercase;
+		font-family: 'Andada Pro', serif;
+		font-size: 1.3rem;
+		letter-spacing: 0.1em;
 	}
 
 	.required {
-		color: #e74c3c;
-		margin-left: 0.3rem;
+		color: #c94444;
+		margin-left: 0.4rem;
 	}
 
 	.form-select {
-		padding: 0.8rem 1rem;
-		border: 2px solid #e0c8c8;
-		border-radius: 0.4rem;
-		font-size: 1.4rem;
+		padding: 1rem 1.5rem;
+		border: 2px solid transparent;
+		border-image: linear-gradient(90deg, #e8e0db, #f0d9d9) 1;
+		border-radius: 0.8rem;
+		font-size: 1.5rem;
 		color: #333;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.8);
 		font-family: inherit;
-		transition: all 0.3s ease;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	.form-select:focus {
 		outline: none;
 		border-color: #b37777;
-		box-shadow: 0 0 0 3px rgba(179, 119, 119, 0.1);
+		background: #fff;
+		box-shadow: 0 0 0 4px rgba(179, 119, 119, 0.1);
 	}
 
 	@media (max-width: 768px) {
 		.products-container {
-			padding: 1.5rem;
+			padding: 2rem;
 		}
 
 		.page-header {
 			flex-direction: column;
+			margin-bottom: 2.5rem;
 		}
 
 		.page-title {
-			font-size: 2.2rem;
+			font-size: 3rem;
 		}
 
 		.action-buttons {
