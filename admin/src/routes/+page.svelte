@@ -255,93 +255,96 @@
 
 <style>
 	.dashboard-container {
-		padding: 2rem;
-		max-width: 1600px;
+		padding: 2.5rem 2rem;
+		max-width: 1700px;
 		margin: 0 auto;
 	}
 
 	.dashboard-header {
-		margin-bottom: 3rem;
+		margin-bottom: 3.5rem;
 	}
 
 	.dashboard-title {
-		font-family: 'Andada Pro';
-		font-size: 3rem;
-		font-weight: 600;
+		font-family: 'Andada Pro', serif;
+		font-size: 3.2rem;
+		font-weight: 500;
 		color: #333;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.8rem;
+		letter-spacing: 0.01em;
 	}
 
 	.dashboard-subtitle {
 		font-size: 1.5rem;
-		color: #888;
+		color: #999;
+		font-weight: 400;
 	}
 
 	.stats-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 		gap: 2rem;
-		margin-bottom: 3rem;
+		margin-bottom: 3.5rem;
 	}
 
 	.charts-section {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(48rem, 1fr));
 		gap: 2rem;
-		margin-bottom: 3rem;
+		margin-bottom: 3.5rem;
 	}
 
 	.chart-placeholder {
-		min-height: 30rem;
+		min-height: 32rem;
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
+		padding: 2rem 0;
 	}
 
 	.bar-chart {
 		display: flex;
 		align-items: flex-end;
 		justify-content: space-around;
-		gap: 1rem;
+		gap: 1.2rem;
 		width: 100%;
-		height: 25rem;
+		height: 26rem;
 	}
 
 	.bar {
 		flex: 1;
-		background: linear-gradient(135deg, #d1b2b2 0%, #b37777 100%);
-		border-radius: 0.4rem 0.4rem 0 0;
+		background: linear-gradient(180deg, #d1b2b2 0%, #b37777 100%);
+		border-radius: 0.6rem 0.6rem 0 0;
 		position: relative;
-		transition: all 0.3s ease;
+		transition: all 0.25s ease;
 		min-height: 2rem;
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
-		padding-bottom: 0.5rem;
+		padding-bottom: 0.6rem;
 	}
 
 	.bar:hover {
-		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.3);
-		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.25);
+		transform: translateY(-3px);
 	}
 
 	.bar-label {
 		font-size: 1.2rem;
 		font-weight: 600;
 		color: #fff;
-		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 	}
 
 	.category-stats {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 2rem;
 	}
 
 	.category-item {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.8rem;
 	}
 
 	.category-header {
@@ -364,15 +367,15 @@
 
 	.progress-bar {
 		width: 100%;
-		height: 1rem;
-		background: #f0e8e8;
-		border-radius: 0.5rem;
+		height: 0.8rem;
+		background: #e8e0db;
+		border-radius: 0.6rem;
 		overflow: hidden;
 	}
 
 	.progress-fill {
 		height: 100%;
-		border-radius: 0.5rem;
+		border-radius: 0.6rem;
 		transition: width 0.3s ease;
 	}
 
@@ -380,44 +383,44 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem 1rem;
-		border-radius: 2rem;
+		padding: 0.6rem 1.2rem;
+		border-radius: 0.6rem;
 		font-size: 1.2rem;
 		font-weight: 600;
 	}
 
 	.status-delivered {
-		background: rgba(39, 174, 96, 0.2);
+		background: rgba(39, 174, 96, 0.15);
 		color: #27ae60;
 	}
 
 	.status-processing {
-		background: rgba(243, 156, 18, 0.2);
+		background: rgba(243, 156, 18, 0.15);
 		color: #f39c12;
 	}
 
 	.status-pending {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.15);
+		color: #c94444;
 	}
 
 	.status-shipped {
-		background: rgba(209, 178, 178, 0.2);
+		background: rgba(179, 119, 119, 0.15);
 		color: #b37777;
 	}
 
 	.action-buttons {
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.8rem;
 	}
 
 	@media (max-width: 1024px) {
 		.dashboard-container {
-			padding: 1.5rem;
+			padding: 2rem;
 		}
 
 		.stats-grid {
-			grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
 		}
 
 		.charts-section {
@@ -427,12 +430,16 @@
 
 	@media (max-width: 768px) {
 		.dashboard-title {
-			font-size: 2.2rem;
+			font-size: 2.4rem;
 		}
 
 		.stats-grid {
-			grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 			gap: 1.5rem;
+		}
+
+		.dashboard-container {
+			padding: 1.5rem;
 		}
 	}
 
@@ -442,7 +449,7 @@
 		}
 
 		.dashboard-title {
-			font-size: 1.8rem;
+			font-size: 2rem;
 		}
 
 		.stats-grid {
@@ -451,7 +458,12 @@
 		}
 
 		.bar-chart {
-			gap: 0.5rem;
+			gap: 0.8rem;
+			height: 22rem;
+		}
+
+		.bar-label {
+			font-size: 1rem;
 		}
 	}
 </style>
