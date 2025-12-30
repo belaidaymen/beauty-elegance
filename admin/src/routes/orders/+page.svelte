@@ -296,79 +296,98 @@
 
 <style>
 	.orders-container {
-		padding: 2rem;
-		max-width: 1600px;
+		padding: 3rem 2.5rem;
+		max-width: 1800px;
 		margin: 0 auto;
+		background: linear-gradient(135deg, #faf9f8 0%, #fdfbf9 100%);
+		min-height: 100vh;
 	}
 
 	.page-header {
-		margin-bottom: 2rem;
+		margin-bottom: 3.5rem;
+		padding-bottom: 2rem;
+		border-bottom: 2px solid var(--primary-lighter);
 	}
 
 	.page-title {
-		font-family: 'Andada Pro';
-		font-size: 3rem;
-		font-weight: 600;
-		color: #333;
+		font-family: 'Abril Fatface', serif;
+		font-size: 3.6rem;
+		font-weight: 400;
+		color: #2a2a2a;
 		margin-bottom: 0.5rem;
+		letter-spacing: -0.01em;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.page-subtitle {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		color: #888;
+		font-family: 'Andada Pro', serif;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	.summary-stats {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-		gap: 1.5rem;
-		margin-bottom: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		gap: 2rem;
+		margin-bottom: 3.5rem;
 	}
 
 	.stat-box {
-		background: #fff;
-		border: 1px solid #f0e8e8;
-		border-radius: 0.8rem;
-		padding: 1.5rem;
+		background: linear-gradient(135deg, #fff 0%, #fefdfb 100%);
+		border: 2px solid transparent;
+		border-image: linear-gradient(135deg, #e8e0db, #f0d9d9) 1;
+		border-radius: 1.2rem;
+		padding: 2rem;
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
-		transition: all 0.3s ease;
+		gap: 1.8rem;
+		transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 	}
 
 	.stat-box:hover {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-		transform: translateY(-2px);
+		box-shadow: 0 12px 32px rgba(179, 119, 119, 0.12);
+		transform: translateY(-6px);
+		border-color: var(--primary-light);
+		background: linear-gradient(135deg, #fff 0%, #fff9f9 100%);
 	}
 
 	.stat-icon {
-		font-size: 3rem;
-		width: 6rem;
-		height: 6rem;
+		font-size: 3.2rem;
+		width: 6.5rem;
+		height: 6.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: #f9f8f8;
-		border-radius: 0.8rem;
+		background: linear-gradient(135deg, rgba(209, 178, 178, 0.15), rgba(209, 178, 178, 0.05));
+		border-radius: 1.2rem;
+		flex-shrink: 0;
 	}
 
 	.stat-info {
 		display: flex;
 		flex-direction: column;
+		gap: 0.5rem;
 	}
 
 	.stat-label {
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 		color: #888;
 		text-transform: uppercase;
-		letter-spacing: 0.05rem;
-		font-weight: 600;
+		letter-spacing: 0.1em;
+		font-weight: 700;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.stat-value {
-		font-size: 2.4rem;
+		font-size: 2.6rem;
 		font-weight: 700;
-		color: #333;
+		color: #2a2a2a;
 	}
 
 	.status-badge {
