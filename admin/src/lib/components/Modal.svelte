@@ -47,7 +47,7 @@
 	.modal-backdrop {
 		position: fixed;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.45);
 		z-index: 999;
 		animation: fadeIn 0.3s ease;
 	}
@@ -64,8 +64,8 @@
 
 	.modal-content {
 		background: #fff;
-		border-radius: 0.8rem;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+		border-radius: 1.2rem;
+		box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
 		width: 100%;
 		max-width: var(--modal-width);
 		max-height: 90vh;
@@ -77,47 +77,49 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 2rem;
-		border-bottom: 1px solid #f0e8e8;
+		padding: 2.2rem 2.4rem;
+		border-bottom: 1px solid #e8e0db;
 	}
 
 	.modal-title {
-		font-family: 'Andada Pro';
+		font-family: 'Andada Pro', serif;
 		font-size: 2rem;
 		font-weight: 600;
 		color: #333;
 		margin: 0;
+		letter-spacing: 0.01em;
 	}
 
 	.modal-close {
 		background: none;
 		border: none;
-		font-size: 2.4rem;
-		color: #888;
+		font-size: 2.2rem;
+		color: #999;
 		cursor: pointer;
 		padding: 0;
-		width: 4rem;
-		height: 4rem;
+		width: 3.6rem;
+		height: 3.6rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 0.4rem;
-		transition: all 0.3s ease;
+		border-radius: 0.6rem;
+		transition: all 0.2s ease;
+		flex-shrink: 0;
 	}
 
 	.modal-close:hover {
-		background: #f9f8f8;
-		color: #333;
+		background: #faf9f8;
+		color: #b37777;
 	}
 
 	.modal-body {
-		padding: 2rem;
+		padding: 2.2rem 2.4rem;
 		color: #333;
 	}
 
 	.modal-footer {
-		padding: 2rem;
-		border-top: 1px solid #f0e8e8;
+		padding: 2.2rem 2.4rem;
+		border-top: 1px solid #e8e0db;
 		display: flex;
 		justify-content: flex-end;
 		gap: 1rem;
@@ -134,7 +136,7 @@
 
 	@keyframes slideUp {
 		from {
-			transform: translateY(3rem);
+			transform: translateY(2.4rem);
 			opacity: 0;
 		}
 		to {
@@ -145,19 +147,19 @@
 
 	@media (max-width: 768px) {
 		.modal-container {
-			padding: 1rem;
+			padding: 1.5rem;
 		}
 
 		.modal-header {
-			padding: 1.5rem;
+			padding: 1.8rem;
 		}
 
 		.modal-body {
-			padding: 1.5rem;
+			padding: 1.8rem;
 		}
 
 		.modal-footer {
-			padding: 1.5rem;
+			padding: 1.8rem;
 		}
 	}
 </style>
