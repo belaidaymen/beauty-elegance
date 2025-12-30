@@ -394,46 +394,56 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem 1rem;
-		border-radius: 2rem;
-		font-size: 1.2rem;
+		padding: 0.7rem 1.3rem;
+		border-radius: 0.7rem;
+		font-size: 1.3rem;
 		font-weight: 600;
 		gap: 0.5rem;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02em;
+		backdrop-filter: blur(10px);
+		border: 1px solid transparent;
 	}
 
 	.status-pending {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.12);
+		color: #8a3a3a;
+		border-color: rgba(201, 68, 68, 0.3);
 	}
 
 	.status-processing {
-		background: rgba(243, 156, 18, 0.2);
-		color: #f39c12;
+		background: rgba(243, 156, 18, 0.12);
+		color: #b87c0f;
+		border-color: rgba(243, 156, 18, 0.3);
 	}
 
 	.status-shipped {
-		background: rgba(209, 178, 178, 0.2);
-		color: #b37777;
+		background: rgba(179, 119, 119, 0.12);
+		color: #6b4444;
+		border-color: rgba(179, 119, 119, 0.3);
 	}
 
 	.status-delivered {
-		background: rgba(39, 174, 96, 0.2);
-		color: #27ae60;
+		background: rgba(39, 174, 96, 0.12);
+		color: #1d6b3c;
+		border-color: rgba(39, 174, 96, 0.3);
 	}
 
 	.status-cancelled {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.12);
+		color: #8a3a3a;
+		border-color: rgba(201, 68, 68, 0.3);
 	}
 
 	.status-refunded {
-		background: rgba(231, 76, 60, 0.2);
-		color: #e74c3c;
+		background: rgba(201, 68, 68, 0.12);
+		color: #8a3a3a;
+		border-color: rgba(201, 68, 68, 0.3);
 	}
 
 	.action-buttons {
 		display: flex;
-		gap: 0.5rem;
+		gap: 1rem;
 	}
 
 	.details-section {
