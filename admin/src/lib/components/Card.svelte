@@ -27,33 +27,36 @@
 <style>
 	.card {
 		background: #fff;
-		border-radius: 0.8rem;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-		border: 1px solid #f0e8e8;
+		border-radius: 1rem;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+		border: 1px solid #e8e0db;
 		transition: all 0.3s ease;
 	}
 
 	.card:hover {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+		border-color: #d1b2b2;
 	}
 
 	.card-header {
-		margin-bottom: 1.5rem;
-		border-bottom: 1px solid #f0e8e8;
-		padding-bottom: 1rem;
+		margin-bottom: 1.8rem;
+		border-bottom: 1px solid #e8e0db;
+		padding-bottom: 1.2rem;
 	}
 
 	.card-title {
-		font-family: 'Andada Pro';
+		font-family: 'Andada Pro', serif;
 		font-size: 1.8rem;
 		font-weight: 600;
 		color: #333;
-		margin-bottom: 0.3rem;
+		margin-bottom: 0.5rem;
+		letter-spacing: 0.01em;
 	}
 
 	.card-subtitle {
 		font-size: 1.2rem;
-		color: #888;
+		color: #999;
+		font-weight: 400;
 	}
 
 	.card-content {
