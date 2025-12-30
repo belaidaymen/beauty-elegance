@@ -282,8 +282,10 @@
 				<p>New Stock Level: <span class="calc-result">{selectedItem.currentStock + restockQuantity}</span></p>
 			</div>
 		</div>
+	{/if}
 
-		<svelte:fragment slot="footer">
+	<svelte:fragment slot="footer">
+		{#if selectedItem}
 			<Button variant="secondary" on:click={() => (showRestockModal = false)}>Cancel</Button>
 			<Button
 				variant="primary"
@@ -292,8 +294,8 @@
 			>
 				Confirm Restock
 			</Button>
-		</svelte:fragment>
-	{/if}
+		{/if}
+	</svelte:fragment>
 </Modal>
 
 <style>
