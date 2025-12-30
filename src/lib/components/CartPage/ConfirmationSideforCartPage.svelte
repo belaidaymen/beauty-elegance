@@ -27,6 +27,10 @@
 		});
 		return totalPrice;
 	}
+
+	function goToOrderPage() {
+		goto('/commande');
+	}
 </script>
 
 <div class="confirmation-side">
