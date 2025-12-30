@@ -1,0 +1,594 @@
+<script lang="ts">
+	import Card from '$lib/components/Card.svelte';
+	import Button from '$lib/components/Button.svelte';
+	import DataTable from '$lib/components/DataTable.svelte';
+	import Modal from '$lib/components/Modal.svelte';
+	import FormInput from '$lib/components/FormInput.svelte';
+
+	interface Order {
+		id: string;
+		customer: string;
+		email: string;
+		total: number;
+		status: string;
+		date: string;
+		items: number;
+	}
+
+	let orders: Order[] = [
+		{
+			id: '#ORD-001',
+			customer: 'Sarah Anderson',
+			email: 'sarah@example.com',
+			total: 2500,
+			status: 'Delivered',
+			date: '2024-01-15',
+			items: 3
+		},
+		{
+			id: '#ORD-002',
+			customer: 'Marie Dupont',
+			email: 'marie@example.com',
+			total: 1850,
+			status: 'Processing',
+			date: '2024-01-14',
+			items: 2
+		},
+		{
+			id: '#ORD-003',
+			customer: 'Lisa Cohen',
+			email: 'lisa@example.com',
+			total: 3200,
+			status: 'Pending',
+			date: '2024-01-13',
+			items: 5
+		},
+		{
+			id: '#ORD-004',
+			customer: 'Emma Wilson',
+			email: 'emma@example.com',
+			total: 1500,
+			status: 'Shipped',
+			date: '2024-01-12',
+			items: 1
+		},
+		{
+			id: '#ORD-005',
+			customer: 'Claire Martin',
+			email: 'claire@example.com',
+			total: 2100,
+			status: 'Delivered',
+			date: '2024-01-11',
+			items: 4
+		},
+		{
+			id: '#ORD-006',
+			customer: 'Nora Schmidt',
+			email: 'nora@example.com',
+			total: 950,
+			status: 'Pending',
+			date: '2024-01-10',
+			items: 2
+		}
+	];
+
+	let showDetailsModal = false;
+	let selectedOrder: Order | null = null;
+	let newStatus = '';
+
+	const columns = [
+		{ key: 'id', label: 'Order ID', width: '15%' },
+		{ key: 'customer', label: 'Customer', width: '20%' },
+		{ key: 'total', label: 'Total (DZD)', width: '15%' },
+		{ key: 'items', label: 'Items', width: '10%' },
+		{ key: 'status', label: 'Status', width: '15%' },
+		{ key: 'date', label: 'Date', width: '15%' }
+	];
+
+	const statuses = [
+		'Pending',
+		'Processing',
+		'Shipped',
+		'Delivered',
+		'Cancelled',
+		'Refunded'
+	];
+
+	const openDetailsModal = (order: Order) => {
+		selectedOrder = order;
+		newStatus = order.status;
+		showDetailsModal = true;
+	};
+
+	const updateOrderStatus = () => {
+		if (selectedOrder) {
+			orders = orders.map((o) =>
+				o.id === selectedOrder?.id ? { ...o, status: newStatus } : o
+			);
+			showDetailsModal = false;
+		}
+	};
+
+	const getStatusColor = (status: string) => {
+		switch (status) {
+			case 'Delivered':
+				return 'success';
+			case 'Processing':
+				return 'warning';
+			case 'Pending':
+				return 'danger';
+			case 'Shipped':
+				return 'primary';
+			case 'Cancelled':
+				return 'danger';
+			case 'Refunded':
+				return 'danger';
+			default:
+				return 'neutral';
+		}
+	};
+
+	const getStatusIcon = (status: string) => {
+		switch (status) {
+			case 'Pending':
+				return '⏳';
+			case 'Processing':
+				return '⚙️';
+			case 'Shipped':
+				return '📦';
+			case 'Delivered':
+				return '✅';
+			case 'Cancelled':
+				return '❌';
+			case 'Refunded':
+				return '💰';
+			default:
+				return '📋';
+		}
+	};
+
+	const trackingSteps = [
+		{ status: 'Pending', description: 'Order placed and awaiting confirmation' },
+		{ status: 'Processing', description: 'Order being prepared for shipment' },
+		{ status: 'Shipped', description: 'Package has been shipped' },
+		{ status: 'Delivered', description: 'Package delivered successfully' }
+	];
+</script>
+
+<div class="orders-container">
+	<div class="page-header">
+		<div>
+			<h1 class="page-title">Order Management</h1>
+			<p class="page-subtitle">Track and manage customer orders</p>
+		</div>
+	</div>
+
+	<!-- Summary Stats -->
+	<div class="summary-stats">
+		<div class="stat-box">
+			<div class="stat-icon">📦</div>
+			<div class="stat-info">
+				<p class="stat-label">Total Orders</p>
+				<p class="stat-value">{orders.length}</p>
+			</div>
+		</div>
+		<div class="stat-box">
+			<div class="stat-icon">⏳</div>
+			<div class="stat-info">
+				<p class="stat-label">Pending</p>
+				<p class="stat-value">{orders.filter((o) => o.status === 'Pending').length}</p>
+			</div>
+		</div>
+		<div class="stat-box">
+			<div class="stat-icon">📫</div>
+			<div class="stat-info">
+				<p class="stat-label">Processing</p>
+				<p class="stat-value">{orders.filter((o) => o.status === 'Processing').length}</p>
+			</div>
+		</div>
+		<div class="stat-box">
+			<div class="stat-icon">✅</div>
+			<div class="stat-info">
+				<p class="stat-label">Delivered</p>
+				<p class="stat-value">{orders.filter((o) => o.status === 'Delivered').length}</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Orders Table -->
+	<Card title="All Orders" subtitle="Complete order listing and status">
+		<DataTable columns={columns} data={orders}>
+			<svelte:fragment slot="cell" let:row let:col>
+				{#if col.key === 'total'}
+					DZD {new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format(row.total)}
+				{:else if col.key === 'status'}
+					<span class="status-badge status-{row.status.toLowerCase().replace(/\s+/g, '-')}">
+						{getStatusIcon(row.status)} {row.status}
+					</span>
+				{:else}
+					{row[col.key]}
+				{/if}
+			</svelte:fragment>
+			<svelte:fragment slot="actions" let:row>
+				<div class="action-buttons">
+					<Button variant="secondary" size="small" on:click={() => openDetailsModal(row)}>
+						👁️ View
+					</Button>
+				</div>
+			</svelte:fragment>
+		</DataTable>
+	</Card>
+</div>
+
+<!-- Order Details Modal -->
+<Modal
+	isOpen={showDetailsModal}
+	title="Order Details"
+	size="large"
+	onClose={() => (showDetailsModal = false)}
+>
+	{#if selectedOrder}
+		<div class="details-section">
+			<h3 class="section-title">Order Information</h3>
+			<div class="details-grid">
+				<div class="detail-item">
+					<label>Order ID</label>
+					<p>{selectedOrder.id}</p>
+				</div>
+				<div class="detail-item">
+					<label>Date</label>
+					<p>{selectedOrder.date}</p>
+				</div>
+				<div class="detail-item">
+					<label>Customer</label>
+					<p>{selectedOrder.customer}</p>
+				</div>
+				<div class="detail-item">
+					<label>Email</label>
+					<p>{selectedOrder.email}</p>
+				</div>
+				<div class="detail-item">
+					<label>Total Amount</label>
+					<p class="amount">DZD {new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format(selectedOrder.total)}</p>
+				</div>
+				<div class="detail-item">
+					<label>Items Count</label>
+					<p>{selectedOrder.items}</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Order Status Update -->
+		<div class="details-section">
+			<h3 class="section-title">Update Order Status</h3>
+			<div class="form-group">
+				<label class="form-label">Current Status: <span class="current-status">{selectedOrder.status}</span></label>
+				<select bind:value={newStatus} class="form-select">
+					{#each statuses as status}
+						<option value={status}>{status}</option>
+					{/each}
+				</select>
+			</div>
+		</div>
+
+		<!-- Tracking Timeline -->
+		<div class="details-section">
+			<h3 class="section-title">Order Progress</h3>
+			<div class="timeline">
+				{#each trackingSteps as step (step.status)}
+					<div class="timeline-item" class:completed={statuses.indexOf(newStatus) >= statuses.indexOf(step.status)}>
+						<div class="timeline-icon">{getStatusIcon(step.status)}</div>
+						<div class="timeline-content">
+							<h4 class="timeline-status">{step.status}</h4>
+							<p class="timeline-description">{step.description}</p>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
+	<svelte:fragment slot="footer">
+		<Button variant="secondary" on:click={() => (showDetailsModal = false)}>Close</Button>
+		<Button variant="primary" on:click={updateOrderStatus}>Update Status</Button>
+	</svelte:fragment>
+</Modal>
+
+<style>
+	.orders-container {
+		padding: 2rem;
+		max-width: 1600px;
+		margin: 0 auto;
+	}
+
+	.page-header {
+		margin-bottom: 2rem;
+	}
+
+	.page-title {
+		font-family: 'Andada Pro';
+		font-size: 3rem;
+		font-weight: 600;
+		color: #333;
+		margin-bottom: 0.5rem;
+	}
+
+	.page-subtitle {
+		font-size: 1.5rem;
+		color: #888;
+	}
+
+	.summary-stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.stat-box {
+		background: #fff;
+		border: 1px solid #f0e8e8;
+		border-radius: 0.8rem;
+		padding: 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		transition: all 0.3s ease;
+	}
+
+	.stat-box:hover {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		transform: translateY(-2px);
+	}
+
+	.stat-icon {
+		font-size: 3rem;
+		width: 6rem;
+		height: 6rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #f9f8f8;
+		border-radius: 0.8rem;
+	}
+
+	.stat-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.stat-label {
+		font-size: 1.2rem;
+		color: #888;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		font-weight: 600;
+	}
+
+	.stat-value {
+		font-size: 2.4rem;
+		font-weight: 700;
+		color: #333;
+	}
+
+	.status-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		border-radius: 2rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		gap: 0.5rem;
+	}
+
+	.status-pending {
+		background: rgba(231, 76, 60, 0.2);
+		color: #e74c3c;
+	}
+
+	.status-processing {
+		background: rgba(243, 156, 18, 0.2);
+		color: #f39c12;
+	}
+
+	.status-shipped {
+		background: rgba(209, 178, 178, 0.2);
+		color: #b37777;
+	}
+
+	.status-delivered {
+		background: rgba(39, 174, 96, 0.2);
+		color: #27ae60;
+	}
+
+	.status-cancelled {
+		background: rgba(231, 76, 60, 0.2);
+		color: #e74c3c;
+	}
+
+	.status-refunded {
+		background: rgba(231, 76, 60, 0.2);
+		color: #e74c3c;
+	}
+
+	.action-buttons {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.details-section {
+		margin-bottom: 2rem;
+	}
+
+	.section-title {
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: #333;
+		margin-bottom: 1.2rem;
+		padding-bottom: 0.8rem;
+		border-bottom: 2px solid #f0e8e8;
+	}
+
+	.details-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: 1.5rem;
+	}
+
+	.detail-item {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.detail-item label {
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: #888;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.detail-item p {
+		font-size: 1.4rem;
+		color: #333;
+	}
+
+	.amount {
+		color: #b37777;
+		font-weight: 600;
+	}
+
+	.current-status {
+		color: #b37777;
+		font-weight: 700;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.form-label {
+		font-size: 1.4rem;
+		font-weight: 600;
+		color: #333;
+	}
+
+	.form-select {
+		padding: 0.8rem 1rem;
+		border: 2px solid #e0c8c8;
+		border-radius: 0.4rem;
+		font-size: 1.4rem;
+		color: #333;
+		background: #fff;
+		font-family: inherit;
+		transition: all 0.3s ease;
+	}
+
+	.form-select:focus {
+		outline: none;
+		border-color: #b37777;
+		box-shadow: 0 0 0 3px rgba(179, 119, 119, 0.1);
+	}
+
+	.timeline {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.timeline-item {
+		display: flex;
+		gap: 1.5rem;
+		position: relative;
+		padding-left: 4rem;
+		opacity: 0.5;
+		transition: all 0.3s ease;
+	}
+
+	.timeline-item.completed {
+		opacity: 1;
+	}
+
+	.timeline-item::before {
+		content: '';
+		position: absolute;
+		left: 2rem;
+		top: 4.5rem;
+		width: 0.2rem;
+		height: 2rem;
+		background: #d1b2b2;
+	}
+
+	.timeline-item:last-child::before {
+		display: none;
+	}
+
+	.timeline-icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		font-size: 2.4rem;
+		width: 4rem;
+		height: 4rem;
+		background: #f9f8f8;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid #e0c8c8;
+	}
+
+	.timeline-item.completed .timeline-icon {
+		background: rgba(179, 119, 119, 0.2);
+		border-color: #b37777;
+	}
+
+	.timeline-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.timeline-status {
+		font-size: 1.4rem;
+		font-weight: 600;
+		color: #333;
+	}
+
+	.timeline-description {
+		font-size: 1.2rem;
+		color: #888;
+	}
+
+	@media (max-width: 768px) {
+		.orders-container {
+			padding: 1.5rem;
+		}
+
+		.page-title {
+			font-size: 2.2rem;
+		}
+
+		.summary-stats {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.details-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.action-buttons {
+			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.summary-stats {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
