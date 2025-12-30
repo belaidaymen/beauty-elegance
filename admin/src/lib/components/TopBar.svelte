@@ -47,7 +47,7 @@
 
 		<div class="user-menu">
 			<button class="user-btn" on:click={() => (showUserMenu = !showUserMenu)}>
-				<span class="user-avatar">👤</span>
+				<span class="user-avatar">A</span>
 				<span class="user-name">Admin</span>
 			</button>
 
