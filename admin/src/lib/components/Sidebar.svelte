@@ -45,7 +45,9 @@
 						class:active={isActive(item.path)}
 						on:click={() => (isMobileOpen = false)}
 					>
-						<span class="nav-icon">{item.icon}</span>
+						<span class="nav-icon">
+							<svelte:component this={item.icon} size={22} color="currentColor" />
+						</span>
 						<span class="nav-label">{item.label}</span>
 					</a>
 				</li>
