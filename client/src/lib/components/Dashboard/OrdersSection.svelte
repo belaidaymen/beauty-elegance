@@ -446,14 +446,15 @@
 	}
 
 	.order-detail-view {
-		animation: slideUp 0.4s ease;
+		animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	@keyframes slideUp {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(15px);
 		}
+
 		to {
 			opacity: 1;
 			transform: translateY(0);
@@ -461,23 +462,25 @@
 	}
 
 	.order-header {
-		margin-bottom: 3rem;
-		padding-bottom: 2rem;
-		border-bottom: 0.1rem solid #f0d9d9;
+		margin-bottom: 4rem;
+		padding-bottom: 2.5rem;
+		border-bottom: 2px solid #f0d9d9;
 	}
 
 	.order-title {
 		font-family: 'Andada Pro', serif;
-		font-size: 2.4rem;
-		color: #333;
-		margin: 0 0 0.5rem 0;
+		font-size: 2.6rem;
+		color: #2a2a2a;
+		margin: 0 0 0.8rem 0;
 		letter-spacing: 0.02rem;
+		font-weight: 700;
 	}
 
 	.order-meta {
-		font-size: 1.4rem;
-		color: #999;
+		font-size: 1.5rem;
+		color: #888;
 		margin: 0;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.items-section {
