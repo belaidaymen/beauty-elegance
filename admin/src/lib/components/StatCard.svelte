@@ -1,22 +1,25 @@
 <script lang="ts">
+	import TrendUpIcon from './Icons/TrendUpIcon.svelte';
+	import TrendDownIcon from './Icons/TrendDownIcon.svelte';
+
 	export let label: string;
 	export let value: string | number;
 	export let trend: 'up' | 'down' | 'neutral' = 'neutral';
 	export let trendValue: string = '';
-	export let icon: string = '';
+	export let icon: any = null;
 	export let color: 'primary' | 'success' | 'warning' | 'danger' = 'primary';
 
 	const colorMap = {
-		primary: '#d1b2b2',
+		primary: '#b37777',
 		success: '#27ae60',
 		warning: '#f39c12',
 		danger: '#e74c3c'
 	};
 
-	const trendIcon = {
-		up: '📈',
-		down: '📉',
-		neutral: '➡️'
+	const trendIconMap = {
+		up: TrendUpIcon,
+		down: TrendDownIcon,
+		neutral: null
 	};
 </script>
 
