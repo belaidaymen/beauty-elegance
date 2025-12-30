@@ -224,44 +224,54 @@
 
 	.empty-state {
 		text-align: center;
-		padding: 6rem 2rem;
+		padding: 8rem 2rem;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(240, 217, 217, 0.15));
+		border-radius: 1.2rem;
+		border: 2px dashed #f0d9d9;
 	}
 
 	.empty-icon {
-		font-size: 4rem;
-		margin-bottom: 1rem;
+		font-size: 5rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.empty-title {
 		font-family: 'Andada Pro', serif;
-		font-size: 2rem;
-		color: #333;
-		margin-bottom: 0.5rem;
+		font-size: 2.2rem;
+		color: #2a2a2a;
+		margin-bottom: 0.8rem;
 		letter-spacing: 0.02rem;
+		font-weight: 600;
 	}
 
 	.empty-text {
-		font-size: 1.5rem;
-		color: #999;
-		margin-bottom: 2rem;
+		font-size: 1.6rem;
+		color: #888;
+		margin-bottom: 3rem;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.empty-cta {
 		display: inline-block;
-		padding: 1rem 2.5rem;
-		background: #f1dada;
-		color: #333;
+		padding: 1.2rem 3rem;
+		background: linear-gradient(135deg, #f1dada 0%, #d1b2b2 100%);
+		color: #fff;
 		text-decoration: none;
-		border-radius: 4px;
+		border-radius: 0.8rem;
 		font-family: 'Andada Pro', serif;
-		letter-spacing: 0.02rem;
-		transition: all 0.3s ease;
-		font-size: 1.5rem;
+		letter-spacing: 0.02em;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		font-size: 1.6rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.15);
 	}
 
 	.empty-cta:hover {
-		background: #fff;
-		outline: 0.1rem solid #f1dada;
+		background: linear-gradient(135deg, #e5c8c8 0%, #b37777 100%);
+		color: #fff;
+		box-shadow: 0 12px 32px rgba(179, 119, 119, 0.25);
+		transform: translateY(-3px);
 	}
 
 	.orders-grid {
