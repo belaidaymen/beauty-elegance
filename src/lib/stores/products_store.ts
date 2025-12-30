@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import type { ProductProps } from '$lib/types';
 import photo1 from '$lib/assets/Sample Imgs/Products Imgs/photo_1.jpg';
 import photo2 from '$lib/assets/Sample Imgs/Products Imgs/photo_2.jpg';
 import photo3 from '$lib/assets/Sample Imgs/Products Imgs/photo_3.jpg';
