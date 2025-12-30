@@ -1,6 +1,22 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	let searchQuery = '';
 	let showUserMenu = false;
+
+	const getTitleFromPath = (pathname: string) => {
+		const path = pathname.split('/').filter(Boolean)[0] || '';
+		const titles: Record<string, string> = {
+			'': 'Dashboard',
+			'products': 'Products',
+			'orders': 'Orders',
+			'stock': 'Stock',
+			'promotions': 'Promotions',
+			'users': 'Users',
+			'settings': 'Settings'
+		};
+		return titles[path] || 'Dashboard';
+	};
 
 	const handleSearch = (e: KeyboardEvent) => {
 		if (e.key === 'Enter') {
