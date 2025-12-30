@@ -69,11 +69,22 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.5rem 2rem;
-		background: #fff;
-		border-bottom: 1px solid #e8e0db;
-		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-		height: 7rem;
+		padding: 1.8rem 2.5rem;
+		background: linear-gradient(90deg, #fff 0%, #fefdfb 100%);
+		border-bottom: 2px solid #f0d9d9;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+		height: 7.5rem;
+		position: relative;
+	}
+
+	.topbar::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(179, 119, 119, 0.2), transparent);
 	}
 
 	.topbar-left {
@@ -81,60 +92,69 @@
 	}
 
 	.page-title {
-		font-family: 'Andada Pro', serif;
-		font-size: 2.4rem;
-		font-weight: 500;
-		color: #333;
-		letter-spacing: 0.01em;
+		font-family: 'Abril Fatface', serif;
+		font-size: 2.6rem;
+		font-weight: 400;
+		color: #2a2a2a;
+		letter-spacing: -0.01em;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.topbar-right {
 		display: flex;
 		align-items: center;
-		gap: 2.5rem;
+		gap: 3rem;
 	}
 
 	.search-box {
 		position: relative;
-		width: 26rem;
+		width: 28rem;
 	}
 
 	.search-input {
 		width: 100%;
-		padding: 0.85rem 1.2rem 0.85rem 3.2rem;
-		border: 1px solid #e8e0db;
-		border-radius: 0.7rem;
-		background: #faf9f8;
-		font-size: 1.4rem;
+		padding: 0.95rem 1.4rem 0.95rem 3.6rem;
+		border: 2px solid transparent;
+		border-image: linear-gradient(90deg, #e8e0db, #f0d9d9) 1;
+		border-radius: 0.9rem;
+		background: rgba(255, 255, 255, 0.7);
+		font-size: 1.5rem;
 		color: #666;
-		transition: all 0.2s ease;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02em;
 	}
 
 	.search-input::placeholder {
-		color: #999;
+		color: #aaa;
 	}
 
 	.search-input:hover {
 		border-color: #d1b2b2;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.9);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 	}
 
 	.search-input:focus {
 		outline: none;
 		border-color: #b37777;
 		background: #fff;
-		box-shadow: 0 0 0 3px rgba(179, 119, 119, 0.08);
+		box-shadow: 0 0 0 4px rgba(179, 119, 119, 0.1);
 	}
 
 	.search-icon-wrapper {
 		position: absolute;
-		left: 1.2rem;
+		left: 1.4rem;
 		top: 50%;
 		transform: translateY(-50%);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #999;
+		color: #b37777;
+		opacity: 0.8;
 	}
 
 	.user-menu {
@@ -144,78 +164,96 @@
 	.user-btn {
 		display: flex;
 		align-items: center;
-		gap: 0.9rem;
-		background: #faf9f8;
-		border: 1.5px solid #e8e0db;
-		border-radius: 2.2rem;
-		padding: 0.7rem 1.4rem;
-		transition: all 0.2s ease;
-		font-size: 1.4rem;
+		gap: 1rem;
+		background: linear-gradient(135deg, rgba(240, 217, 217, 0.5), rgba(255, 255, 255, 0.7));
+		border: 2px solid transparent;
+		border-image: linear-gradient(90deg, #e8e0db, #f0d9d9) 1;
+		border-radius: 2.4rem;
+		padding: 0.8rem 1.8rem;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		font-size: 1.5rem;
 		cursor: pointer;
+		font-family: 'Andada Pro', serif;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	.user-btn:hover {
 		border-color: #b37777;
-		background: #fff;
+		background: linear-gradient(135deg, rgba(209, 178, 178, 0.15), #fff);
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.12);
+		transform: translateY(-2px);
 	}
 
 	.user-avatar {
-		width: 3.2rem;
-		height: 3.2rem;
-		background: linear-gradient(135deg, #d1b2b2, #b37777);
+		width: 3.6rem;
+		height: 3.6rem;
+		background: linear-gradient(135deg, #d1b2b2, #9d5f5f);
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: #fff;
-		font-weight: 600;
-		font-size: 1.4rem;
+		font-weight: 700;
+		font-size: 1.6rem;
 		flex-shrink: 0;
+		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.25);
+		font-family: 'Andada Pro', serif;
 	}
 
 	.user-name {
-		font-weight: 500;
-		color: #333;
+		font-weight: 600;
+		color: #2a2a2a;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.user-dropdown {
 		position: absolute;
-		top: calc(100% + 0.8rem);
+		top: calc(100% + 1rem);
 		right: 0;
-		background: #fff;
-		border: 1px solid #e8e0db;
-		border-radius: 0.8rem;
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+		background: linear-gradient(135deg, #fff 0%, #fefdfb 100%);
+		border: 2px solid #f0d9d9;
+		border-radius: 1rem;
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 		z-index: 100;
-		min-width: 16rem;
+		min-width: 18rem;
 		overflow: hidden;
+		backdrop-filter: blur(10px);
 	}
 
 	.dropdown-item {
 		display: block;
 		width: 100%;
-		padding: 1.1rem 1.6rem;
+		padding: 1.2rem 1.8rem;
 		text-align: left;
 		background: none;
 		border: none;
 		color: #666;
-		font-size: 1.4rem;
-		transition: all 0.2s ease;
+		font-size: 1.5rem;
+		transition: all 0.3s ease;
 		cursor: pointer;
+		font-family: 'Andada Pro', serif;
+		letter-spacing: 0.02em;
+		font-weight: 500;
+		border-bottom: 1px solid rgba(240, 217, 217, 0.5);
+	}
+
+	.dropdown-item:last-child {
+		border-bottom: none;
 	}
 
 	.dropdown-item:hover {
-		background: #faf9f8;
-		color: #b37777;
+		background: linear-gradient(90deg, rgba(209, 178, 178, 0.1), transparent);
+		color: #8b5555;
 	}
 
 	.logout-btn {
-		color: #c94444;
+		color: #9d5555;
 	}
 
 	.logout-btn:hover {
-		background: rgba(201, 68, 68, 0.08);
-		color: #b33a3a;
+		background: linear-gradient(90deg, rgba(201, 68, 68, 0.1), transparent);
+		color: #7a3a3a;
 	}
 
 	@media (max-width: 768px) {
