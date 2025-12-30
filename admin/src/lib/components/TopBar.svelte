@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import SearchIcon from './Icons/SearchIcon.svelte';
 
 	let searchQuery = '';
 	let showUserMenu = false;
