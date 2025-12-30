@@ -426,17 +426,23 @@
 		background: none;
 		border: none;
 		padding: 0;
-		margin-bottom: 2rem;
-		font-size: 1.5rem;
+		margin-bottom: 2.5rem;
+		font-size: 1.6rem;
 		color: #b37777;
 		cursor: pointer;
 		font-family: 'Andada Pro', serif;
-		letter-spacing: 0.02rem;
-		transition: all 0.3s ease;
+		letter-spacing: 0.02em;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		font-weight: 600;
+		text-transform: uppercase;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.back-link:hover {
 		color: #8b5555;
+		transform: translateX(-4px);
 	}
 
 	.order-detail-view {
