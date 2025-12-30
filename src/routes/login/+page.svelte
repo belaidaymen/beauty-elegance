@@ -2,10 +2,57 @@
 	import logoUncolored from '$lib/assets/logo-uncolored.png';
 	import sidebarImg from '$lib/assets/imgs/sidebar-img.jpeg';
 	import googleIcon from '$lib/assets/icons/google.svg';
+	import { user } from '$lib/stores/user_store';
+	import type { User } from '$lib/types';
+
+	let email = '';
+	let password = '';
+	let error = '';
+	let isLoading = false;
+
+	async function handleLogin(e: Event) {
+		e.preventDefault();
+		error = '';
+		isLoading = true;
+
+		// Simulate login - In a real app, this would call an API
+		try {
+			// For demo purposes, create a user object
+			const newUser: User = {
+				id: `user-${Date.now()}`,
+				username: email.split('@')[0],
+				email,
+				firstName: 'John',
+				lastName: 'Doe',
+				phone: '+213 XXX XXX XXX',
+				address: '123 Rue de la Beauté',
+				city: 'Alger',
+				postalCode: '16000',
+				country: 'Algérie',
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString()
+			};
+
+			user.login(newUser);
+
+			// Redirect to dashboard
+			if (typeof window !== 'undefined') {
+				window.location.href = '/dashboard';
+			}
+		} catch (err) {
+			error = 'Une erreur est survenue lors de la connexion. Veuillez réessayer.';
+		} finally {
+			isLoading = false;
+		}
+	}
+
+	function handleGoogleLogin() {
+		error = 'La connexion Google n\'est pas encore configurée. Utilisez l\'email et le mot de passe.';
+	}
 </script>
 
 <svelte:head>
-	<title>Inscription | Beaute & Elegance</title>
+	<title>Connexion | Beaute & Elegance</title>
 </svelte:head>
 
 <div class="container">
@@ -15,10 +62,14 @@
 	</div>
 
 	<div class="form-container">
-		<form action="">
+		<form on:submit={handleLogin}>
 			<h1>Connexion</h1>
 
-			<button class="google-login-btn">
+			{#if error}
+				<div class="error-message">{error}</div>
+			{/if}
+
+			<button type="button" class="google-login-btn" on:click={handleGoogleLogin}>
 				<img src={googleIcon} alt="google-icon" class="google-icon" />
 				<span>Continuer avec Google</span>
 			</button>
@@ -30,15 +81,29 @@
 
 			<div class="username-or-email-input-container input-container">
 				<label for="username">Nom d'utilisateur ou email</label>
-				<input type="text" id="username" required />
+				<input
+					type="email"
+					id="username"
+					bind:value={email}
+					placeholder="votre@email.com"
+					required
+				/>
 			</div>
 			<div class="password-input-container input-container">
 				<label for="password">Mot de passe</label>
-				<input type="password" id="password" required />
+				<input
+					type="password"
+					id="password"
+					bind:value={password}
+					placeholder="Votre mot de passe"
+					required
+				/>
 				<a href="/" class="forgot-password-link">Mot de passe oublié?</a>
 			</div>
 
-			<button class="connexion-btn">Connexion</button>
+			<button type="submit" class="connexion-btn" disabled={isLoading}>
+				{isLoading ? 'Connexion en cours...' : 'Connexion'}
+			</button>
 			<span class="signup-question">
 				Vous n'avez pas de compte ? <a href="/" class="signup-link">Inscrivez-vous</a>
 			</span>
