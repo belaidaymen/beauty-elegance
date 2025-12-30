@@ -3,7 +3,11 @@
 	import sidebarImg from '$lib/assets/imgs/sidebar-img.jpeg';
 	import googleIcon from '$lib/assets/icons/google.svg';
 	import { user } from '$lib/stores/user_store';
+	import { orders } from '$lib/stores/orders_store';
+	import { favorites } from '$lib/stores/favorites_store';
+	import { feedback } from '$lib/stores/feedback_store';
 	import type { User } from '$lib/types';
+	import { generateDemoOrders, generateDemoFavorites, generateDemoFeedback } from '$lib/utils/demo-data';
 
 	let email = '';
 	let password = '';
@@ -17,9 +21,11 @@
 
 		// Simulate login - In a real app, this would call an API
 		try {
+			const userId = `user-${Date.now()}`;
+
 			// For demo purposes, create a user object
 			const newUser: User = {
-				id: `user-${Date.now()}`,
+				id: userId,
 				username: email.split('@')[0],
 				email,
 				firstName: 'John',
@@ -34,6 +40,21 @@
 			};
 
 			user.login(newUser);
+
+			// Load demo data for first-time users
+			const demoOrders = generateDemoOrders();
+			const demoFavorites = generateDemoFavorites();
+			const demoFeedback = generateDemoFeedback();
+
+			// Add user ID to demo data
+			demoOrders.forEach(order => order.userId = userId);
+			demoFavorites.forEach(fav => fav.userId = userId);
+			demoFeedback.forEach(fb => fb.userId = userId);
+
+			// Store demo data
+			demoOrders.forEach(order => orders.add(order));
+			demoFavorites.forEach(fav => favorites.add(fav));
+			demoFeedback.forEach(fb => feedback.add(fb));
 
 			// Redirect to dashboard
 			if (typeof window !== 'undefined') {
