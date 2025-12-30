@@ -266,112 +266,150 @@
 
 	.orders-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
+		gap: 2.5rem;
 	}
 
 	.order-card {
-		background: #fff;
-		border: 0.1rem solid #f0d9d9;
-		border-radius: 8px;
-		padding: 2rem;
-		transition: all 0.3s ease;
+		background: linear-gradient(135deg, #fff 0%, #fefdfb 100%);
+		border: 2px solid transparent;
+		border-image: linear-gradient(135deg, #f0d9d9, #e8e0db) 1;
+		border-radius: 1.2rem;
+		padding: 2.5rem;
+		transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 		display: flex;
 		flex-direction: column;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.order-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: linear-gradient(90deg, transparent, #b37777, transparent);
+		opacity: 0;
+		transition: opacity 0.3s ease;
 	}
 
 	.order-card:hover {
-		border-color: #f1dada;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+		border-color: #d1b2b2;
+		box-shadow: 0 12px 32px rgba(179, 119, 119, 0.12);
+		transform: translateY(-6px);
+		background: linear-gradient(135deg, #fff 0%, #fff9f9 100%);
+	}
+
+	.order-card:hover::before {
+		opacity: 1;
 	}
 
 	.card-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 1.5rem;
-		padding-bottom: 1rem;
-		border-bottom: 0.05rem solid #f5f5f5;
+		margin-bottom: 1.8rem;
+		padding-bottom: 1.2rem;
+		border-bottom: 2px solid #f0d9d9;
 	}
 
 	.card-number {
 		font-family: 'Andada Pro', serif;
-		font-size: 1.8rem;
-		color: #333;
+		font-size: 1.9rem;
+		color: #2a2a2a;
 		margin: 0;
 		letter-spacing: 0.02rem;
+		font-weight: 700;
 	}
 
 	.card-status {
 		background: var(--status-color);
 		color: #fff;
-		padding: 0.5rem 1.2rem;
-		border-radius: 4px;
-		font-size: 1.2rem;
+		padding: 0.7rem 1.4rem;
+		border-radius: 0.7rem;
+		font-size: 1.3rem;
 		font-family: 'Andada Pro', serif;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: capitalize;
 	}
 
 	.card-body {
 		flex: 1;
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.card-date {
-		font-size: 1.3rem;
-		color: #999;
-		margin: 0 0 0.8rem 0;
+		font-size: 1.4rem;
+		color: #888;
+		margin: 0 0 1rem 0;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.card-items {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		color: #666;
-		margin: 0.5rem 0;
+		margin: 0.7rem 0;
+		font-family: 'Andada Pro', serif;
 	}
 
 	.card-total {
-		font-size: 1.8rem;
-		font-weight: 600;
-		color: #333;
-		margin: 1rem 0 0 0;
+		font-size: 2rem;
+		font-weight: 700;
+		color: #2a2a2a;
+		margin: 1.5rem 0 0 0;
 		font-family: 'Andada Pro', serif;
+		letter-spacing: -0.01em;
 	}
 
 	.card-footer {
 		display: flex;
-		gap: 1rem;
+		gap: 1.2rem;
 	}
 
 	.card-btn {
 		flex: 1;
-		padding: 0.8rem 1.5rem;
+		padding: 1rem 1.8rem;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0.8rem;
 		cursor: pointer;
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		font-family: 'Andada Pro', serif;
-		transition: all 0.3s ease;
-		letter-spacing: 0.02rem;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		letter-spacing: 0.02em;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 1.2rem;
 	}
 
 	.details-btn {
-		background: #f1dada;
-		color: #333;
+		background: linear-gradient(135deg, #f1dada 0%, #d1b2b2 100%);
+		color: #fff;
+		border: 2px solid transparent;
+		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.15);
 	}
 
 	.details-btn:hover {
-		background: #fff;
-		outline: 0.1rem solid #f1dada;
+		background: linear-gradient(135deg, #e5c8c8 0%, #b37777 100%);
+		color: #fff;
+		box-shadow: 0 8px 20px rgba(179, 119, 119, 0.25);
+		transform: translateY(-2px);
 	}
 
 	.invoice-btn {
-		background: #f5f5f5;
+		background: linear-gradient(135deg, rgba(240, 217, 217, 0.5), rgba(224, 208, 208, 0.3));
 		color: #666;
-		border: 0.1rem solid #e8e8e8;
+		border: 2px solid #f0d9d9;
 	}
 
 	.invoice-btn:hover {
-		background: #f0d9d9;
-		border-color: #f1dada;
+		background: linear-gradient(135deg, rgba(224, 208, 208, 0.7), rgba(209, 178, 178, 0.5));
+		color: #8b5555;
+		border-color: #d1b2b2;
+		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.1);
 	}
 
 	.back-link {
