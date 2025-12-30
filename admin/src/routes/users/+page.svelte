@@ -246,8 +246,10 @@
 				</div>
 			</div>
 		</div>
+	{/if}
 
-		<svelte:fragment slot="footer">
+	<svelte:fragment slot="footer">
+		{#if selectedUser}
 			<Button variant="secondary" on:click={() => (showDetailsModal = false)}>Close</Button>
 			<Button
 				variant={selectedUser.status === 'Active' ? 'danger' : 'success'}
@@ -255,8 +257,8 @@
 			>
 				{selectedUser.status === 'Active' ? 'Deactivate Account' : 'Activate Account'}
 			</Button>
-		</svelte:fragment>
-	{/if}
+		{/if}
+	</svelte:fragment>
 </Modal>
 
 <style>
