@@ -6,6 +6,7 @@
 	import MediaQuery from 'svelte-media-queries';
 	import { shouldVerticalNavbarAppear } from '$lib/stores/navbar_visibility_store';
 	import { shouldCartSidebarAppear } from '$lib/stores/cart_visibility_store';
+	import { isAuthenticated } from '$lib/stores/user_store';
 
 	export let brownBackground = false;
 </script>
@@ -38,7 +39,11 @@
 					{/if}
 				</MediaQuery>
 				<div class="right-icons-container icons-container">
-					<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+					{#if $isAuthenticated}
+						<a href="/dashboard" class="login-btn" title="Dashboard"><img src={loginIcon} alt="dashboard" /></a>
+					{:else}
+						<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+					{/if}
 					<button on:click={() => ($shouldCartSidebarAppear = true)} class="shopping-cart-btn"
 						><img src={cartIcon} alt="shopping-cart" /></button
 					>
@@ -48,7 +53,11 @@
 			<img src={logo} alt="logo" class="logo" />
 			<h1>Beaute & Elegance</h1>
 			<div class="icons-container">
-				<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+				{#if $isAuthenticated}
+					<a href="/dashboard" class="login-btn" title="Dashboard"><img src={loginIcon} alt="dashboard" /></a>
+				{:else}
+					<a href="/login" class="login-btn"><img src={loginIcon} alt="login" /></a>
+				{/if}
 				<button class="search-btn"> <img src={searchIcon} alt="search" /></button>
 				<button on:click={() => ($shouldCartSidebarAppear = true)} class="shopping-cart-btn">
 					<img src={cartIcon} alt="shopping-cart" /></button

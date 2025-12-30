@@ -1,4 +1,5 @@
 import { writable, type Writable } from 'svelte/store';
+import type { CartProductProps, ProductProps } from '$lib/types';
 
 export const cart = createCartStore();
 

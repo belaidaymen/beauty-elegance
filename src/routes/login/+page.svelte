@@ -2,10 +2,78 @@
 	import logoUncolored from '$lib/assets/logo-uncolored.png';
 	import sidebarImg from '$lib/assets/imgs/sidebar-img.jpeg';
 	import googleIcon from '$lib/assets/icons/google.svg';
+	import { user } from '$lib/stores/user_store';
+	import { orders } from '$lib/stores/orders_store';
+	import { favorites } from '$lib/stores/favorites_store';
+	import { feedback } from '$lib/stores/feedback_store';
+	import type { User } from '$lib/types';
+	import { generateDemoOrders, generateDemoFavorites, generateDemoFeedback } from '$lib/utils/demo-data';
+
+	let email = '';
+	let password = '';
+	let error = '';
+	let isLoading = false;
+
+	async function handleLogin(e: Event) {
+		e.preventDefault();
+		error = '';
+		isLoading = true;
+
+		// Simulate login - In a real app, this would call an API
+		try {
+			const userId = `user-${Date.now()}`;
+
+			// For demo purposes, create a user object
+			const newUser: User = {
+				id: userId,
+				username: email.split('@')[0],
+				email,
+				firstName: 'John',
+				lastName: 'Doe',
+				phone: '+213 XXX XXX XXX',
+				address: '123 Rue de la Beauté',
+				city: 'Alger',
+				postalCode: '16000',
+				country: 'Algérie',
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString()
+			};
+
+			user.login(newUser);
+
+			// Load demo data for first-time users
+			const demoOrders = generateDemoOrders();
+			const demoFavorites = generateDemoFavorites();
+			const demoFeedback = generateDemoFeedback();
+
+			// Add user ID to demo data
+			demoOrders.forEach(order => order.userId = userId);
+			demoFavorites.forEach(fav => fav.userId = userId);
+			demoFeedback.forEach(fb => fb.userId = userId);
+
+			// Store demo data
+			demoOrders.forEach(order => orders.add(order));
+			demoFavorites.forEach(fav => favorites.add(fav));
+			demoFeedback.forEach(fb => feedback.add(fb));
+
+			// Redirect to dashboard
+			if (typeof window !== 'undefined') {
+				window.location.href = '/dashboard';
+			}
+		} catch (err) {
+			error = 'Une erreur est survenue lors de la connexion. Veuillez réessayer.';
+		} finally {
+			isLoading = false;
+		}
+	}
+
+	function handleGoogleLogin() {
+		error = 'La connexion Google n\'est pas encore configurée. Utilisez l\'email et le mot de passe.';
+	}
 </script>
 
 <svelte:head>
-	<title>Inscription | Beaute & Elegance</title>
+	<title>Connexion | Beaute & Elegance</title>
 </svelte:head>
 
 <div class="container">
@@ -15,10 +83,14 @@
 	</div>
 
 	<div class="form-container">
-		<form action="">
+		<form on:submit={handleLogin}>
 			<h1>Connexion</h1>
 
-			<button class="google-login-btn">
+			{#if error}
+				<div class="error-message">{error}</div>
+			{/if}
+
+			<button type="button" class="google-login-btn" on:click={handleGoogleLogin}>
 				<img src={googleIcon} alt="google-icon" class="google-icon" />
 				<span>Continuer avec Google</span>
 			</button>
@@ -30,15 +102,29 @@
 
 			<div class="username-or-email-input-container input-container">
 				<label for="username">Nom d'utilisateur ou email</label>
-				<input type="text" id="username" required />
+				<input
+					type="email"
+					id="username"
+					bind:value={email}
+					placeholder="votre@email.com"
+					required
+				/>
 			</div>
 			<div class="password-input-container input-container">
 				<label for="password">Mot de passe</label>
-				<input type="password" id="password" required />
+				<input
+					type="password"
+					id="password"
+					bind:value={password}
+					placeholder="Votre mot de passe"
+					required
+				/>
 				<a href="/" class="forgot-password-link">Mot de passe oublié?</a>
 			</div>
 
-			<button class="connexion-btn">Connexion</button>
+			<button type="submit" class="connexion-btn" disabled={isLoading}>
+				{isLoading ? 'Connexion en cours...' : 'Connexion'}
+			</button>
 			<span class="signup-question">
 				Vous n'avez pas de compte ? <a href="/" class="signup-link">Inscrivez-vous</a>
 			</span>
@@ -95,6 +181,17 @@
 	h1 {
 		letter-spacing: 0.15rem;
 		font-size: 3.8rem;
+	}
+
+	.error-message {
+		background: #fee;
+		color: #c33;
+		padding: 1rem 1.5rem;
+		border-radius: 6px;
+		margin-bottom: 2rem;
+		border: 1px solid #fcc;
+		font-size: 1.5rem;
+		width: 85%;
 	}
 
 	.google-login-btn {
