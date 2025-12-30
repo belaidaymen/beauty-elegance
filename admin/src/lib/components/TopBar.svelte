@@ -40,7 +40,9 @@
 				on:keydown={handleSearch}
 				class="search-input"
 			/>
-			<span class="search-icon">🔍</span>
+			<span class="search-icon-wrapper">
+				<SearchIcon size={18} color="#999" />
+			</span>
 		</div>
 
 		<div class="user-menu">
