@@ -57,14 +57,14 @@
 
 <style>
 	.dashboard-main {
-		background: #fff;
+		background: linear-gradient(180deg, #fff 0%, #faf9f8 50%, #f5f1f0 100%);
 		min-height: calc(100vh - 60px);
 	}
 
 	.content-wrapper {
-		max-width: 1200px;
+		max-width: 1300px;
 		margin: 0 auto;
-		padding: 4rem 3rem;
+		padding: 4.5rem 3.5rem;
 	}
 
 	.loading-container {
@@ -74,39 +74,47 @@
 		align-items: center;
 		height: 100vh;
 		gap: 2rem;
+		background: linear-gradient(135deg, #fff 0%, #faf9f8 100%);
 	}
 
 	.loading-spinner {
-		width: 4rem;
-		height: 4rem;
-		border: 2px solid #f0d9d9;
+		width: 4.8rem;
+		height: 4.8rem;
+		border: 3px solid #f0d9d9;
 		border-top-color: #b37777;
+		border-right-color: #d1b2b2;
 		border-radius: 50%;
-		animation: spin 0.8s linear infinite;
+		animation: spin 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+		box-shadow: 0 0 20px rgba(179, 119, 119, 0.2);
 	}
 
 	.loading-container p {
-		font-size: 1.6rem;
-		color: #999;
+		font-size: 1.7rem;
+		color: #888;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.05rem;
+		font-weight: 500;
 	}
 
 	@keyframes spin {
-		to {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
 			transform: rotate(360deg);
 		}
 	}
 
 	@media (max-width: 950px) {
 		.content-wrapper {
-			padding: 3rem 1.5rem;
+			padding: 3.5rem 2rem;
 		}
 	}
 
 	@media (max-width: 600px) {
 		.content-wrapper {
-			padding: 2rem 1rem;
+			padding: 2.5rem 1.2rem;
 		}
 	}
 </style>
