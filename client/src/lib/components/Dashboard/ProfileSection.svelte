@@ -236,43 +236,51 @@
 	.profile-form {
 		display: flex;
 		flex-direction: column;
-		gap: 2.5rem;
+		gap: 3rem;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(250, 249, 248, 0.5));
+		padding: 3rem;
+		border-radius: 1.2rem;
+		border: 2px solid #f0d9d9;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 0.6rem;
+		gap: 0.8rem;
 	}
 
 	.form-group label {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		color: #666;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.02rem;
-		font-weight: 500;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 1.3rem;
 	}
 
 	.form-group input {
-		padding: 1rem 1.2rem;
-		border: 0.1rem solid #e8e8e8;
-		border-radius: 4px;
+		padding: 1.1rem 1.5rem;
+		border: 2px solid transparent;
+		border-image: linear-gradient(90deg, #e8e0db, #f0d9d9) 1;
+		border-radius: 0.8rem;
 		font-size: 1.5rem;
 		font-family: 'Open Sans', sans-serif;
-		transition: all 0.3s ease;
-		background: #fff;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		background: rgba(255, 255, 255, 0.8);
 	}
 
 	.form-group input:focus {
 		outline: none;
-		border-color: #f1dada;
-		box-shadow: 0 0 0 3px rgba(241, 218, 218, 0.2);
+		border-color: #b37777;
+		background: #fff;
+		box-shadow: 0 0 0 4px rgba(179, 119, 119, 0.1);
 	}
 
 	.form-row-two,
 	.form-row-three {
 		display: grid;
-		gap: 1.5rem;
+		gap: 2rem;
 	}
 
 	.form-row-two {
@@ -285,45 +293,52 @@
 
 	.form-actions {
 		display: flex;
-		gap: 1rem;
-		margin-top: 1rem;
+		gap: 1.5rem;
+		margin-top: 2rem;
+		padding-top: 2rem;
+		border-top: 2px solid #f0d9d9;
 	}
 
 	.save-btn,
 	.cancel-btn {
-		padding: 1rem 2.5rem;
+		padding: 1.2rem 3rem;
 		font-size: 1.5rem;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0.8rem;
 		cursor: pointer;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.02rem;
-		transition: all 0.3s ease;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 		flex: 1;
-		font-weight: 500;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 1.3rem;
 	}
 
 	.save-btn {
-		background: #f1dada;
-		color: #333;
-		border: 0.1rem solid #f1dada;
+		background: linear-gradient(135deg, #f1dada 0%, #d1b2b2 100%);
+		color: #fff;
+		border: 2px solid transparent;
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.2);
 	}
 
 	.save-btn:hover {
-		background: #fff;
-		border-color: #b37777;
-		color: #b37777;
+		background: linear-gradient(135deg, #e5c8c8 0%, #b37777 100%);
+		color: #fff;
+		box-shadow: 0 12px 32px rgba(179, 119, 119, 0.28);
+		transform: translateY(-2px);
 	}
 
 	.cancel-btn {
-		background: #f5f5f5;
+		background: linear-gradient(135deg, rgba(240, 217, 217, 0.5), rgba(224, 208, 208, 0.3));
 		color: #666;
-		border: 0.1rem solid #e8e8e8;
+		border: 2px solid #f0d9d9;
 	}
 
 	.cancel-btn:hover {
-		background: #f0f0f0;
-		border-color: #d0d0d0;
+		background: linear-gradient(135deg, rgba(224, 208, 208, 0.7), rgba(209, 178, 178, 0.5));
+		color: #8b5555;
+		border-color: #d1b2b2;
 	}
 
 	.profile-display {
