@@ -26,10 +26,14 @@
 <div class="stat-card">
 	<div class="stat-header">
 		<div class="stat-icon" style="--icon-color: {colorMap[color]}">
-			{icon}
+			{#if icon}
+				<svelte:component this={icon} size={28} color={colorMap[color]} />
+			{/if}
 		</div>
 		<div class="stat-trend" class:trend-up={trend === 'up'} class:trend-down={trend === 'down'}>
-			{trendIcon[trend]}
+			{#if trendIconMap[trend]}
+				<svelte:component this={trendIconMap[trend]} size={18} color="currentColor" />
+			{/if}
 			{#if trendValue}
 				<span>{trendValue}</span>
 			{/if}
