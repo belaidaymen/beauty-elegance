@@ -1,20 +1,27 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import DashboardIcon from './Icons/DashboardIcon.svelte';
+	import ProductsIcon from './Icons/ProductsIcon.svelte';
+	import OrdersIcon from './Icons/OrdersIcon.svelte';
+	import StockIcon from './Icons/StockIcon.svelte';
+	import PromotionsIcon from './Icons/PromotionsIcon.svelte';
+	import UsersIcon from './Icons/UsersIcon.svelte';
+	import SettingsIcon from './Icons/SettingsIcon.svelte';
 
 	interface NavItem {
 		label: string;
 		path: string;
-		icon: string;
+		icon: any;
 	}
 
 	const navItems: NavItem[] = [
-		{ label: 'Dashboard', path: '/', icon: '📊' },
-		{ label: 'Products', path: '/products', icon: '📦' },
-		{ label: 'Orders', path: '/orders', icon: '🛒' },
-		{ label: 'Stock', path: '/stock', icon: '📈' },
-		{ label: 'Promotions', path: '/promotions', icon: '🎯' },
-		{ label: 'Users', path: '/users', icon: '👥' },
-		{ label: 'Settings', path: '/settings', icon: '⚙️' }
+		{ label: 'Dashboard', path: '/', icon: DashboardIcon },
+		{ label: 'Products', path: '/products', icon: ProductsIcon },
+		{ label: 'Orders', path: '/orders', icon: OrdersIcon },
+		{ label: 'Stock', path: '/stock', icon: StockIcon },
+		{ label: 'Promotions', path: '/promotions', icon: PromotionsIcon },
+		{ label: 'Users', path: '/users', icon: UsersIcon },
+		{ label: 'Settings', path: '/settings', icon: SettingsIcon }
 	];
 
 	let isMobileOpen = false;
