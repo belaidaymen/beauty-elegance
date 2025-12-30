@@ -17,16 +17,94 @@
 			{/if}
 		</label>
 	{/if}
-	<input
-		{id}
-		type={inputType}
-		bind:value
-		{placeholder}
-		{required}
-		class="form-input"
-		class:error
-		{...$$restProps}
-	/>
+	{#if inputType === 'text'}
+		<input
+			{id}
+			type="text"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'email'}
+		<input
+			{id}
+			type="email"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'tel'}
+		<input
+			{id}
+			type="tel"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'number'}
+		<input
+			{id}
+			type="number"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'date'}
+		<input
+			{id}
+			type="date"
+			bind:value
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'password'}
+		<input
+			{id}
+			type="password"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else if inputType === 'url'}
+		<input
+			{id}
+			type="url"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{:else}
+		<input
+			{id}
+			type="text"
+			bind:value
+			{placeholder}
+			{required}
+			class="form-input"
+			class:error
+			{...$$restProps}
+		/>
+	{/if}
 	{#if error}
 		<p class="error-text">{error}</p>
 	{/if}
