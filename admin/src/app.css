@@ -19,7 +19,9 @@ html {
 
 body {
 	font-size: 1.6rem;
-	background: #fafafa;
+	background: #faf9f8;
+	color: #333;
+	line-height: 1.6;
 }
 
 ::-webkit-scrollbar {
@@ -32,16 +34,18 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background: rgb(216, 207, 191);
+	background: #e8e0db;
 }
 
 button {
 	cursor: pointer;
+	transition: all 0.2s ease;
 }
 
 a {
 	text-decoration: none;
 	color: inherit;
+	transition: color 0.2s ease;
 }
 
 input,
