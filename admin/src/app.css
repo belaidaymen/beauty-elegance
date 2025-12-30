@@ -1,0 +1,174 @@
+@font-face {
+	font-family: 'MoonTime';
+	src: url('./lib/assets/fonts/MoonTime-Regular.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+	scroll-behavior: smooth;
+}
+
+html,
+body,
+body > div {
+	height: 100%;
+	width: 100%;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	background: #fafafa;
+}
+
+::-webkit-scrollbar {
+	width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #b37777;
+	border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(216, 207, 191);
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+/* Utility classes */
+.flex {
+	display: flex;
+}
+
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.grid {
+	display: grid;
+}
+
+.gap-1 {
+	gap: 0.5rem;
+}
+
+.gap-2 {
+	gap: 1rem;
+}
+
+.gap-3 {
+	gap: 1.5rem;
+}
+
+.gap-4 {
+	gap: 2rem;
+}
+
+.mt-1 {
+	margin-top: 0.5rem;
+}
+
+.mt-2 {
+	margin-top: 1rem;
+}
+
+.mt-3 {
+	margin-top: 1.5rem;
+}
+
+.mt-4 {
+	margin-top: 2rem;
+}
+
+.mb-1 {
+	margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+	margin-bottom: 1rem;
+}
+
+.mb-3 {
+	margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+	margin-bottom: 2rem;
+}
+
+.p-2 {
+	padding: 1rem;
+}
+
+.p-3 {
+	padding: 1.5rem;
+}
+
+.p-4 {
+	padding: 2rem;
+}
+
+.rounded {
+	border-radius: 0.4rem;
+}
+
+.rounded-lg {
+	border-radius: 0.8rem;
+}
+
+.shadow {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-md {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bg-white {
+	background: #fff;
+}
+
+.bg-light {
+	background: #f9f8f8;
+}
+
+.text-muted {
+	color: #888;
+}
+
+.text-dark {
+	color: #333;
+}
+
+.text-center {
+	text-align: center;
+}
