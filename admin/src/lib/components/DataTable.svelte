@@ -75,8 +75,8 @@
 <style>
 	.table-container {
 		overflow-x: auto;
-		border-radius: 0.8rem;
-		border: 1px solid #f0e8e8;
+		border-radius: 1rem;
+		border: 1px solid #e8e0db;
 		background: #fff;
 	}
 
@@ -87,32 +87,32 @@
 	}
 
 	.data-table thead {
-		background: #f9f8f8;
-		border-bottom: 2px solid #e0c8c8;
+		background: #faf9f8;
+		border-bottom: 1px solid #e8e0db;
 	}
 
 	.data-table th {
-		padding: 1.2rem;
+		padding: 1.4rem 1.5rem;
 		text-align: left;
 		font-weight: 600;
 		color: #333;
 		text-transform: uppercase;
 		font-size: 1.2rem;
-		letter-spacing: 0.05rem;
+		letter-spacing: 0.08em;
 	}
 
 	.data-table td {
-		padding: 1.2rem;
-		border-bottom: 1px solid #f0e8e8;
-		color: #555;
+		padding: 1.4rem 1.5rem;
+		border-bottom: 1px solid #e8e0db;
+		color: #666;
 	}
 
 	.data-table tbody tr {
-		transition: background-color 0.3s ease;
+		transition: background-color 0.2s ease;
 	}
 
 	.data-table.striped tbody tr:nth-child(odd) {
-		background: #fdfcfc;
+		background: #fefdfb;
 	}
 
 	.data-table.hoverable tbody tr:hover {
@@ -120,7 +120,7 @@
 	}
 
 	.data-table.hoverable tbody tr.selected {
-		background: rgba(209, 178, 178, 0.15);
+		background: rgba(179, 119, 119, 0.12);
 	}
 
 	.checkbox-col {
@@ -133,14 +133,14 @@
 	}
 
 	.actions-col {
-		width: 12rem;
+		width: 13rem;
 		text-align: center;
 	}
 
 	.empty-state {
-		padding: 3rem;
+		padding: 4rem 3rem;
 		text-align: center;
-		color: #888;
+		color: #999;
 		font-size: 1.5rem;
 	}
 
@@ -148,6 +148,7 @@
 		cursor: pointer;
 		width: 1.8rem;
 		height: 1.8rem;
+		accent-color: #b37777;
 	}
 
 	@media (max-width: 768px) {
@@ -157,7 +158,7 @@
 
 		.data-table th,
 		.data-table td {
-			padding: 0.8rem;
+			padding: 1rem 1.2rem;
 		}
 
 		.checkbox-col {
@@ -165,7 +166,7 @@
 		}
 
 		.actions-col {
-			width: 8rem;
+			width: 10rem;
 		}
 	}
 </style>
