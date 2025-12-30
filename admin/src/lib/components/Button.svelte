@@ -26,63 +26,65 @@
 		justify-content: center;
 		gap: 0.6rem;
 		border: none;
-		border-radius: 0.4rem;
+		border-radius: 0.7rem;
 		font-weight: 600;
 		text-decoration: none;
-		transition: all 0.3s ease;
+		transition: all 0.2s ease;
 		cursor: pointer;
 		font-family: inherit;
 		font-size: inherit;
 	}
 
 	.btn-small {
-		padding: 0.5rem 1.2rem;
+		padding: 0.6rem 1.2rem;
 		font-size: 1.2rem;
 	}
 
 	.btn-medium {
-		padding: 0.8rem 1.6rem;
+		padding: 0.9rem 1.8rem;
 		font-size: 1.4rem;
 	}
 
 	.btn-large {
-		padding: 1rem 2rem;
+		padding: 1.1rem 2.2rem;
 		font-size: 1.6rem;
 	}
 
 	.btn-primary {
-		background: linear-gradient(135deg, #d1b2b2 0%, #b37777 100%);
+		background: #b37777;
 		color: #fff;
 		border: 2px solid #b37777;
 	}
 
 	.btn-primary:hover:not(:disabled) {
-		background: linear-gradient(135deg, #b37777 0%, #9d5f5f 100%);
-		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.3);
+		background: #9d5f5f;
+		border-color: #9d5f5f;
+		box-shadow: 0 4px 12px rgba(179, 119, 119, 0.25);
 		transform: translateY(-2px);
 	}
 
 	.btn-secondary {
-		background: #f9f8f8;
+		background: #faf9f8;
 		color: #333;
-		border: 2px solid #e0c8c8;
+		border: 1.5px solid #e8e0db;
 	}
 
 	.btn-secondary:hover:not(:disabled) {
 		background: #f0e8e8;
 		border-color: #d1b2b2;
+		color: #b37777;
 	}
 
 	.btn-danger {
-		background: #e74c3c;
+		background: #c94444;
 		color: #fff;
-		border: 2px solid #e74c3c;
+		border: 2px solid #c94444;
 	}
 
 	.btn-danger:hover:not(:disabled) {
-		background: #c9302c;
-		border-color: #c9302c;
-		box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+		background: #b33a3a;
+		border-color: #b33a3a;
+		box-shadow: 0 4px 12px rgba(201, 68, 68, 0.25);
 	}
 
 	.btn-success {
@@ -94,7 +96,7 @@
 	.btn-success:hover:not(:disabled) {
 		background: #229954;
 		border-color: #229954;
-		box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+		box-shadow: 0 4px 12px rgba(39, 174, 96, 0.25);
 	}
 
 	.btn:disabled,
@@ -105,17 +107,17 @@
 
 	@media (max-width: 480px) {
 		.btn-small {
-			padding: 0.4rem 0.8rem;
+			padding: 0.5rem 1rem;
 			font-size: 1.1rem;
 		}
 
 		.btn-medium {
-			padding: 0.6rem 1.2rem;
+			padding: 0.7rem 1.4rem;
 			font-size: 1.2rem;
 		}
 
 		.btn-large {
-			padding: 0.8rem 1.4rem;
+			padding: 0.9rem 1.8rem;
 			font-size: 1.4rem;
 		}
 	}
