@@ -39,6 +39,7 @@
 		display: flex;
 		height: 100vh;
 		width: 100%;
+		background: #faf9f8;
 	}
 
 	.main-content {
@@ -51,7 +52,7 @@
 	main {
 		flex: 1;
 		overflow-y: auto;
-		background: #fafafa;
+		background: #faf9f8;
 	}
 
 	/* Responsive design */
@@ -61,7 +62,7 @@
 		}
 
 		main {
-			max-height: calc(100vh - 6rem);
+			max-height: calc(100vh - 6.5rem);
 		}
 	}
 </style>
