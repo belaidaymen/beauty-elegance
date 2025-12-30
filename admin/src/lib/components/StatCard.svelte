@@ -49,42 +49,43 @@
 <style>
 	.stat-card {
 		background: #fff;
-		border: 1px solid #f0e8e8;
-		border-radius: 0.8rem;
-		padding: 1.5rem;
+		border: 1px solid #e8e0db;
+		border-radius: 1rem;
+		padding: 1.8rem;
 		transition: all 0.3s ease;
 	}
 
 	.stat-card:hover {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+		transform: translateY(-3px);
+		border-color: #d1b2b2;
 	}
 
 	.stat-header {
 		display: flex;
 		justify-content: space-between;
-		align-items: start;
-		margin-bottom: 1rem;
+		align-items: flex-start;
+		margin-bottom: 1.5rem;
 	}
 
 	.stat-icon {
-		width: 5rem;
-		height: 5rem;
-		background: rgba(var(--icon-color), 0.1);
-		border-radius: 0.8rem;
+		width: 5.2rem;
+		height: 5.2rem;
+		background: linear-gradient(135deg, rgba(209, 178, 178, 0.15), rgba(209, 178, 178, 0.05));
+		border-radius: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 2.5rem;
+		flex-shrink: 0;
 	}
 
 	.stat-trend {
 		display: flex;
 		align-items: center;
-		gap: 0.4rem;
-		padding: 0.5rem 1rem;
-		border-radius: 0.4rem;
-		background: #f9f8f8;
+		gap: 0.6rem;
+		padding: 0.6rem 1.2rem;
+		border-radius: 0.6rem;
+		background: #faf9f8;
 		font-size: 1.3rem;
 		font-weight: 600;
 		color: #888;
@@ -96,8 +97,8 @@
 	}
 
 	.trend-down {
-		color: #e74c3c;
-		background: rgba(231, 76, 60, 0.1);
+		color: #c94444;
+		background: rgba(201, 68, 68, 0.1);
 	}
 
 	.stat-content {
@@ -107,16 +108,17 @@
 
 	.stat-label {
 		font-size: 1.2rem;
-		color: #888;
-		margin-bottom: 0.5rem;
+		color: #999;
+		margin-bottom: 0.7rem;
 		text-transform: uppercase;
-		letter-spacing: 0.05rem;
+		letter-spacing: 0.08em;
 		font-weight: 600;
 	}
 
 	.stat-value {
-		font-size: 2.4rem;
+		font-size: 2.6rem;
 		font-weight: 700;
 		color: #333;
+		line-height: 1.2;
 	}
 </style>
