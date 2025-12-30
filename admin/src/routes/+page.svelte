@@ -86,7 +86,7 @@
 			value="DZD 125,450"
 			trend="up"
 			trendValue="+12.5%"
-			icon="💰"
+			icon={SalesIcon}
 			color="success"
 		/>
 		<StatCard
@@ -94,7 +94,7 @@
 			value="1,234"
 			trend="up"
 			trendValue="+8.2%"
-			icon="📦"
+			icon={OrdersIcon}
 			color="primary"
 		/>
 		<StatCard
@@ -102,7 +102,7 @@
 			value="342"
 			trend="down"
 			trendValue="-2.3%"
-			icon="🛍️"
+			icon={ProductsIcon}
 			color="warning"
 		/>
 		<StatCard
@@ -110,7 +110,7 @@
 			value="5,678"
 			trend="up"
 			trendValue="+15.3%"
-			icon="👥"
+			icon={CustomersIcon}
 			color="success"
 		/>
 		<StatCard
@@ -118,7 +118,7 @@
 			value="23"
 			trend="up"
 			trendValue="+3.1%"
-			icon="⏳"
+			icon={PendingIcon}
 			color="danger"
 		/>
 		<StatCard
@@ -126,7 +126,7 @@
 			value="12"
 			trend="down"
 			trendValue="-5.2%"
-			icon="⚠️"
+			icon={LowStockIcon}
 			color="danger"
 		/>
 	</div>
