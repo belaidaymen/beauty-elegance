@@ -3,6 +3,12 @@
 	import StatCard from '$lib/components/StatCard.svelte';
 	import DataTable from '$lib/components/DataTable.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import SalesIcon from '$lib/components/Icons/SalesIcon.svelte';
+	import OrdersIcon from '$lib/components/Icons/OrdersIcon.svelte';
+	import ProductsIcon from '$lib/components/Icons/ProductsIcon.svelte';
+	import CustomersIcon from '$lib/components/Icons/CustomersIcon.svelte';
+	import PendingIcon from '$lib/components/Icons/PendingIcon.svelte';
+	import LowStockIcon from '$lib/components/Icons/LowStockIcon.svelte';
 
 	interface Order {
 		id: string;
