@@ -636,20 +636,31 @@
 
 		.orders-grid {
 			grid-template-columns: 1fr;
+			gap: 1.8rem;
 		}
 
 		.item-row {
 			flex-direction: column;
-			gap: 1rem;
+			gap: 1.5rem;
+			padding: 1.5rem;
 		}
 
 		.item-image {
 			width: 100%;
-			height: 15rem;
+			height: 16rem;
 		}
 
 		.item-pricing {
 			align-items: flex-start;
+			width: 100%;
+		}
+
+		.summary-section {
+			padding: 2rem;
+		}
+
+		.address-box {
+			padding: 1.5rem;
 		}
 	}
 </style>
