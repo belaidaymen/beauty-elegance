@@ -358,52 +358,74 @@
 
 	.profile-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(38rem, 1fr));
 		gap: 3rem;
 	}
 
 	.info-section {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 1.8rem;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(250, 249, 248, 0.5));
+		padding: 2.5rem;
+		border-radius: 1.2rem;
+		border: 2px solid #f0d9d9;
+		transition: all 0.3s ease;
+	}
+
+	.info-section:hover {
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.08);
+		border-color: #d1b2b2;
 	}
 
 	.section-title {
 		font-family: 'Andada Pro', serif;
-		font-size: 1.8rem;
-		color: #333;
-		margin: 0 0 1rem 0;
-		padding-bottom: 1rem;
-		border-bottom: 0.1rem solid #f0d9d9;
+		font-size: 1.9rem;
+		color: #2a2a2a;
+		margin: 0 0 1.5rem 0;
+		padding-bottom: 1.2rem;
+		border-bottom: 2px solid #f0d9d9;
 		letter-spacing: 0.02rem;
-		font-weight: 500;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 1.5rem;
 	}
 
 	.info-row {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem 0;
-		border-bottom: 0.05rem solid #f5f5f5;
+		padding: 1.2rem 0;
+		border-bottom: 1px solid rgba(240, 217, 217, 0.6);
+		transition: all 0.2s ease;
 	}
 
 	.info-row:last-child {
 		border-bottom: none;
 	}
 
+	.info-row:hover {
+		background: rgba(179, 119, 119, 0.03);
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
 	.label {
 		font-size: 1.4rem;
-		color: #999;
+		color: #888;
 		font-family: 'Andada Pro', serif;
-		font-weight: 500;
-		letter-spacing: 0.02rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		font-size: 1.2rem;
 	}
 
 	.value {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		color: #333;
 		font-family: 'Open Sans', sans-serif;
 		font-weight: 500;
+		text-align: right;
 	}
 
 	@media (max-width: 768px) {
