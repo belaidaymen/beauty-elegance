@@ -162,6 +162,17 @@
 		font-size: 3.8rem;
 	}
 
+	.error-message {
+		background: #fee;
+		color: #c33;
+		padding: 1rem 1.5rem;
+		border-radius: 6px;
+		margin-bottom: 2rem;
+		border: 1px solid #fcc;
+		font-size: 1.5rem;
+		width: 85%;
+	}
+
 	.google-login-btn {
 		all: initial;
 		display: flex;
