@@ -203,7 +203,7 @@
 	}
 
 	.company-info h1 {
-		font-family: 'MoonTime';
+		font-family: 'Andada Pro', serif;
 		font-size: 4rem;
 		color: #333;
 		margin: 0;

@@ -81,7 +81,7 @@
 	}
 
 	h1 {
-		font-family: 'MoonTime';
+		font-family: 'Andada Pro', serif;
 		font-weight: lighter;
 		font-size: 6.17rem;
 	}
