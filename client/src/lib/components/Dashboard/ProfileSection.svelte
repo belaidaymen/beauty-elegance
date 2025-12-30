@@ -161,15 +161,18 @@
 
 <style>
 	.profile-section {
-		animation: fadeIn 0.4s ease;
+		animation: fadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
+			transform: translateY(10px);
 		}
+
 		to {
 			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
@@ -177,45 +180,57 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
-		margin-bottom: 3rem;
-		padding-bottom: 2rem;
-		border-bottom: 0.1rem solid #f0d9d9;
+		margin-bottom: 4rem;
+		padding-bottom: 2.5rem;
+		border-bottom: 2px solid #f0d9d9;
+		gap: 2rem;
 	}
 
 	.page-title {
 		font-family: 'Abril Fatface', serif;
-		font-size: 3.2rem;
-		color: #333;
-		margin: 0 0 0.5rem 0;
+		font-size: 3.4rem;
+		color: #2a2a2a;
+		margin: 0 0 0.6rem 0;
 		font-weight: 400;
-		letter-spacing: 0.02rem;
+		letter-spacing: -0.01rem;
+		background: linear-gradient(135deg, #333 0%, #b37777 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 
 	.page-subtitle {
-		font-size: 1.5rem;
-		color: #999;
+		font-size: 1.6rem;
+		color: #888;
 		margin: 0;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.02rem;
+		font-weight: 500;
 	}
 
 	.edit-btn {
-		background: none;
-		border: 0.1rem solid #f1dada;
-		padding: 0.8rem 2rem;
-		font-size: 1.4rem;
-		color: #b37777;
+		background: linear-gradient(135deg, #f1dada 0%, #f5e5e5 100%);
+		border: 2px solid transparent;
+		border-image: linear-gradient(135deg, #f1dada, #d1b2b2) 1;
+		padding: 1rem 2.5rem;
+		font-size: 1.5rem;
+		color: #8b5555;
 		cursor: pointer;
 		font-family: 'Andada Pro', serif;
 		letter-spacing: 0.02rem;
-		border-radius: 4px;
-		transition: all 0.3s ease;
+		border-radius: 0.8rem;
+		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		font-weight: 600;
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.edit-btn:hover {
-		background: #fff9f9;
+		background: linear-gradient(135deg, #fff 0%, #fff9f9 100%);
 		border-color: #b37777;
-		color: #8b5555;
+		color: #6b4444;
+		box-shadow: 0 6px 16px rgba(179, 119, 119, 0.15);
+		transform: translateY(-2px);
 	}
 
 	.profile-form {
