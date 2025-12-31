@@ -111,7 +111,9 @@
 		on:click={() => (isOpen = !isOpen)}
 	>
 		<span>Filters</span>
-		<ChevronDown size={20} class:rotated={isOpen} />
+		<div class="chevron-icon" class:rotated={isOpen}>
+			<ChevronDown size={20} />
+		</div>
 		{#if hasActiveFilters()}
 			<span class="filter-badge">
 				{[
