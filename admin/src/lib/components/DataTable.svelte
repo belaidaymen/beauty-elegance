@@ -9,13 +9,6 @@
 	<table class="data-table" class:striped class:hoverable>
 		<thead>
 			<tr>
-				<th class="checkbox-col">
-					<input
-						type="checkbox"
-						checked={selectedRows.size === data.length && data.length > 0}
-						on:change={toggleAllRows}
-					/>
-				</th>
 				{#each columns as col (col.key)}
 					<th style="width: {col.width || 'auto'}">{col.label}</th>
 				{/each}
@@ -24,14 +17,7 @@
 		</thead>
 		<tbody>
 			{#each data as row, idx (idx)}
-				<tr class:selected={selectedRows.has(idx)}>
-					<td class="checkbox-col">
-						<input
-							type="checkbox"
-							checked={selectedRows.has(idx)}
-							on:change={() => toggleRowSelection(idx)}
-						/>
-					</td>
+				<tr>
 					{#each columns as col (col.key)}
 						<td>
 							<slot name="cell" {row} {col} {idx}>
