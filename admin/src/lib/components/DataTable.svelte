@@ -3,25 +3,6 @@
 	export let data: Array<Record<string, any>> = [];
 	export let striped: boolean = true;
 	export let hoverable: boolean = true;
-
-	let selectedRows: Set<number> = new Set();
-
-	const toggleRowSelection = (index: number) => {
-		if (selectedRows.has(index)) {
-			selectedRows.delete(index);
-		} else {
-			selectedRows.add(index);
-		}
-		selectedRows = selectedRows;
-	};
-
-	const toggleAllRows = () => {
-		if (selectedRows.size === data.length) {
-			selectedRows.clear();
-		} else {
-			selectedRows = new Set(data.map((_, i) => i));
-		}
-	};
 </script>
 
 <div class="table-container">
