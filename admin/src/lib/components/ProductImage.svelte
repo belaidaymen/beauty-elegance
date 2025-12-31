@@ -41,8 +41,6 @@
 
 <style>
 	.image-wrapper {
-		width: v-bind('sizeMap[size]');
-		height: v-bind('sizeMap[size]');
 		border-radius: 1rem;
 		overflow: hidden;
 		background: linear-gradient(135deg, #f5f0ed 0%, #faf8f6 100%);
