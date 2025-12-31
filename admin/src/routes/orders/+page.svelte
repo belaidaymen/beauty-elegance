@@ -993,13 +993,15 @@
 		grid-column: 1 / -1;
 	}
 
-	.detail-item label {
+	.detail-item label,
+	.detail-label {
 		font-size: 1.2rem;
 		font-weight: 600;
 		color: #888;
 		text-transform: uppercase;
 		letter-spacing: 0.05rem;
 		margin-bottom: 0.5rem;
+		display: block;
 	}
 
 	.detail-item p {
