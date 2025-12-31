@@ -92,7 +92,7 @@
 				<p class="upload-format">PNG, JPG, GIF up to 5MB</p>
 			</div>
 		{/if}
-	</div>
+	</button>
 	<input
 		bind:this={fileInput}
 		type="file"
