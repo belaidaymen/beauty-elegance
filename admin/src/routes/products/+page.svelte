@@ -277,6 +277,7 @@
 	};
 
 	const handleEditProduct = () => {
+		console.log('Edit product clicked', { editingProduct, formData });
 		if (editingProduct && formData.name && formData.sku && formData.category) {
 			products = products.map((p) =>
 				p.id === editingProduct?.id
@@ -293,6 +294,9 @@
 					: previewProduct;
 			showEditModal = false;
 			resetForm();
+			console.log('Product updated:', editingProduct.id);
+		} else {
+			console.error('Edit validation failed:', { editingProduct, name: formData.name, sku: formData.sku, category: formData.category });
 		}
 	};
 
