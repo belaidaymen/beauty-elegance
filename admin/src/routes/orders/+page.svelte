@@ -222,7 +222,8 @@
 			<svelte:fragment slot="actions" let:row>
 				<div class="action-buttons">
 					<Button variant="secondary" size="small" on:click={() => openDetailsModal(row)}>
-						👁️ View
+						<Eye size={18} />
+						View
 					</Button>
 				</div>
 			</svelte:fragment>
