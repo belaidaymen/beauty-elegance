@@ -212,7 +212,8 @@
 					DZD {new Intl.NumberFormat('en-US', { minimumFractionDigits: 0 }).format(row.total)}
 				{:else if col.key === 'status'}
 					<span class="status-badge status-{row.status.toLowerCase().replace(/\s+/g, '-')}">
-						{getStatusIcon(row.status)} {row.status}
+						<svelte:component this={getStatusIcon(row.status)} size={16} />
+						{row.status}
 					</span>
 				{:else}
 					{row[col.key]}
