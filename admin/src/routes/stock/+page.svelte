@@ -220,7 +220,8 @@
 			<svelte:fragment slot="actions" let:row>
 				<div class="action-buttons">
 					<Button variant="primary" size="small" on:click={() => openRestockModal(row)}>
-						📥 Restock
+						<Upload size={18} />
+						Restock
 					</Button>
 				</div>
 			</svelte:fragment>
