@@ -993,7 +993,6 @@
 		grid-column: 1 / -1;
 	}
 
-	.detail-item label,
 	.detail-label {
 		font-size: 1.2rem;
 		font-weight: 600;
