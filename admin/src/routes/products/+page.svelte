@@ -251,8 +251,10 @@
 	};
 
 	const handleAddProduct = () => {
+		console.log('Add product clicked', formData);
 		if (!formData.name || !formData.sku || !formData.category) {
 			alert('Please fill in all required fields');
+			console.error('Missing required fields:', { name: formData.name, sku: formData.sku, category: formData.category });
 			return;
 		}
 
@@ -266,10 +268,12 @@
 			createdAt: new Date().toISOString().split('T')[0],
 			updatedAt: new Date().toISOString().split('T')[0]
 		};
+		console.log('New product:', newProduct);
 		products = [newProduct, ...products];
 		currentPage = 1;
 		showAddModal = false;
 		resetForm();
+		console.log('Product added. Total products:', products.length);
 	};
 
 	const handleEditProduct = () => {
