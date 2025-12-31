@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import logo from '$lib/assets/logo.png';
 	import DashboardIcon from './Icons/DashboardIcon.svelte';
 	import ProductsIcon from './Icons/ProductsIcon.svelte';
 	import OrdersIcon from './Icons/OrdersIcon.svelte';
