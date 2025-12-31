@@ -132,19 +132,19 @@
 	const getStatusIcon = (status: string) => {
 		switch (status) {
 			case 'Pending':
-				return '⏳';
+				return Clock;
 			case 'Processing':
-				return '⚙️';
+				return RotateCw;
 			case 'Shipped':
-				return '📦';
+				return Package;
 			case 'Delivered':
-				return '✅';
+				return CheckCircle;
 			case 'Cancelled':
-				return '❌';
+				return XCircle;
 			case 'Refunded':
-				return '💰';
+				return DollarSign;
 			default:
-				return '📋';
+				return Package;
 		}
 	};
 
