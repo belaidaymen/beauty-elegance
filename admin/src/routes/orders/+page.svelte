@@ -587,29 +587,29 @@
 			<h3 class="section-title">Order Information</h3>
 			<div class="details-grid">
 				<div class="detail-item">
-					<label>Order ID</label>
+					<span class="detail-label">Order ID</span>
 					<p>{selectedOrder.id}</p>
 				</div>
 				<div class="detail-item">
-					<label>Date</label>
+					<span class="detail-label">Date</span>
 					<p>{selectedOrder.date}</p>
 				</div>
 				<div class="detail-item">
-					<label>Customer</label>
+					<span class="detail-label">Customer</span>
 					<p>{selectedOrder.customer}</p>
 				</div>
 				<div class="detail-item">
-					<label>Email</label>
+					<span class="detail-label">Email</span>
 					<p>{selectedOrder.email}</p>
 				</div>
 				{#if selectedOrder.phone}
 					<div class="detail-item">
-						<label>Phone</label>
+						<span class="detail-label">Phone</span>
 						<p>{selectedOrder.phone}</p>
 					</div>
 				{/if}
 				<div class="detail-item">
-					<label>Payment Method</label>
+					<span class="detail-label">Payment Method</span>
 					<p>{selectedOrder.paymentMethod || 'Not specified'}</p>
 				</div>
 			</div>
