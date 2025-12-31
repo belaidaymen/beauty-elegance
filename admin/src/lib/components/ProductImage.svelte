@@ -10,9 +10,11 @@
 		medium: '15rem',
 		large: '25rem'
 	};
+
+	$: imageSize = sizeMap[size];
 </script>
 
-<div class="image-wrapper" class:clickable on:click={onClick} class:size-{size}>
+<div class="image-wrapper" class:clickable on:click={onClick} style="width: {imageSize}; height: {imageSize};">
 	{#if src}
 		<img {src} {alt} class="product-image" />
 	{:else}
