@@ -74,28 +74,32 @@
 			class:active={activeTab === 'profile'}
 			on:click={() => (activeTab = 'profile')}
 		>
-			👤 Profile
+			<User size={18} />
+			Profile
 		</button>
 		<button
 			class="tab-btn"
 			class:active={activeTab === 'store'}
 			on:click={() => (activeTab = 'store')}
 		>
-			🏪 Store Settings
+			<Store size={18} />
+			Store Settings
 		</button>
 		<button
 			class="tab-btn"
 			class:active={activeTab === 'notifications'}
 			on:click={() => (activeTab = 'notifications')}
 		>
-			🔔 Notifications
+			<Bell size={18} />
+			Notifications
 		</button>
 		<button
 			class="tab-btn"
 			class:active={activeTab === 'security'}
 			on:click={() => (activeTab = 'security')}
 		>
-			🔒 Security
+			<Lock size={18} />
+			Security
 		</button>
 	</div>
 
