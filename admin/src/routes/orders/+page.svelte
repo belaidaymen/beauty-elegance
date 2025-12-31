@@ -4,6 +4,7 @@
 	import DataTable from '$lib/components/DataTable.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import FormInput from '$lib/components/FormInput.svelte';
+	import { Eye, Package, Clock, RotateCw, CheckCircle, XCircle, DollarSign } from 'lucide-svelte';
 
 	interface Order {
 		id: string;
