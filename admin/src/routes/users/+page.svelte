@@ -4,6 +4,7 @@
 	import DataTable from '$lib/components/DataTable.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import FormInput from '$lib/components/FormInput.svelte';
+	import { Users, CheckCircle, DollarSign, ShoppingBag, Eye } from 'lucide-svelte';
 
 	interface User {
 		id: string;
