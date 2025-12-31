@@ -82,17 +82,24 @@
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
+		padding: 0;
 	}
 
-	.image-wrapper.clickable {
+	button.image-wrapper {
 		cursor: pointer;
 		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
-	.image-wrapper.clickable:hover {
+	button.image-wrapper:hover {
 		border-color: #b37777;
 		box-shadow: 0 8px 24px rgba(179, 119, 119, 0.15);
 		transform: translateY(-2px);
+	}
+
+	button.image-wrapper:focus {
+		outline: none;
+		border-color: #b37777;
+		box-shadow: 0 0 0 3px rgba(179, 119, 119, 0.2);
 	}
 
 	.product-image {
