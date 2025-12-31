@@ -96,6 +96,7 @@
 	</button>
 	<input
 		bind:this={fileInput}
+		{id}
 		type="file"
 		accept="image/*"
 		hidden
