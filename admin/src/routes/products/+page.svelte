@@ -210,11 +210,13 @@
 	);
 
 	const openAddModal = () => {
+		console.log('Add modal opened');
 		resetForm();
 		showAddModal = true;
 	};
 
 	const openEditModal = (product: Product) => {
+		console.log('Edit modal opened for product:', product);
 		editingProduct = product;
 		formData = {
 			name: product.name,
