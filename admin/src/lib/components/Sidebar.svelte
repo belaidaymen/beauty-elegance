@@ -94,18 +94,39 @@
 	}
 
 	.sidebar-header {
-		padding: 3rem 2.2rem 2.2rem;
+		padding: 2rem 1.5rem;
 		border-bottom: 2px solid #f0d9d9;
-		text-align: center;
 		background: linear-gradient(180deg, rgba(209, 178, 178, 0.05), transparent);
+	}
+
+	.brand-container {
+		display: flex;
+		align-items: center;
+		gap: 1.2rem;
+	}
+
+	.brand-logo {
+		width: 5.2rem;
+		height: 5.2rem;
+		object-fit: contain;
+		flex-shrink: 0;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		flex: 1;
+		text-align: left;
 	}
 
 	.brand-title {
 		font-family: 'Abril Fatface', serif;
-		font-size: 2.8rem;
+		font-size: 1.8rem;
 		font-weight: 400;
 		color: #2a2a2a;
-		margin-bottom: 0.4rem;
+		margin: 0;
 		letter-spacing: -0.01em;
 		background: linear-gradient(135deg, #333 0%, #b37777 100%);
 		-webkit-background-clip: text;
@@ -114,12 +135,13 @@
 	}
 
 	.brand-subtitle {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		color: #888;
 		font-weight: 600;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		font-family: 'Andada Pro', serif;
+		margin: 0;
 	}
 
 	.sidebar-nav {
