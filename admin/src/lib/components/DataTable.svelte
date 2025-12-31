@@ -86,19 +86,6 @@
 		background: #f9f8f8;
 	}
 
-	.data-table.hoverable tbody tr.selected {
-		background: rgba(179, 119, 119, 0.12);
-	}
-
-	.checkbox-col {
-		width: 5rem;
-		text-align: center;
-	}
-
-	.checkbox-col input {
-		cursor: pointer;
-	}
-
 	.actions-col {
 		width: 13rem;
 		text-align: center;
@@ -109,13 +96,6 @@
 		text-align: center;
 		color: #999;
 		font-size: 1.5rem;
-	}
-
-	input[type='checkbox'] {
-		cursor: pointer;
-		width: 1.8rem;
-		height: 1.8rem;
-		accent-color: #b37777;
 	}
 
 	@media (max-width: 768px) {
