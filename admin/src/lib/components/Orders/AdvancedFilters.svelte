@@ -87,78 +87,84 @@
 			<div class="filters-grid">
 				<!-- Status Filter -->
 				<div class="filter-group">
-					<label class="filter-label-text">Order Status</label>
-					<div class="status-checkboxes">
-						{#each statuses as status}
-							<label class="checkbox-label">
-								<input
-									type="checkbox"
-									checked={filters.status.includes(status)}
-									on:change={() => toggleStatus(status)}
-									class="checkbox-input"
-								/>
-								<span class="checkbox-text">{status}</span>
-							</label>
-						{/each}
-					</div>
+					<fieldset>
+						<legend class="filter-label-text">Order Status</legend>
+						<div class="status-checkboxes">
+							{#each statuses as status}
+								<label class="checkbox-label">
+									<input
+										type="checkbox"
+										checked={filters.status.includes(status)}
+										on:change={() => toggleStatus(status)}
+										class="checkbox-input"
+									/>
+									<span class="checkbox-text">{status}</span>
+								</label>
+							{/each}
+						</div>
+					</fieldset>
 				</div>
 
 				<!-- Date Range Filter -->
 				<div class="filter-group">
-					<label class="filter-label-text">Date Range</label>
-					<div class="date-inputs">
-						<div class="date-input-wrapper">
-							<label for="date-from" class="input-label">From</label>
-							<input
-								id="date-from"
-								type="date"
-								bind:value={filters.dateFrom}
-								class="input-field"
-							/>
+					<fieldset>
+						<legend class="filter-label-text">Date Range</legend>
+						<div class="date-inputs">
+							<div class="date-input-wrapper">
+								<label for="date-from" class="input-label">From</label>
+								<input
+									id="date-from"
+									type="date"
+									bind:value={filters.dateFrom}
+									class="input-field"
+								/>
+							</div>
+							<div class="date-input-wrapper">
+								<label for="date-to" class="input-label">To</label>
+								<input
+									id="date-to"
+									type="date"
+									bind:value={filters.dateTo}
+									class="input-field"
+								/>
+							</div>
 						</div>
-						<div class="date-input-wrapper">
-							<label for="date-to" class="input-label">To</label>
-							<input
-								id="date-to"
-								type="date"
-								bind:value={filters.dateTo}
-								class="input-field"
-							/>
-						</div>
-					</div>
+					</fieldset>
 				</div>
 
 				<!-- Amount Range Filter -->
 				<div class="filter-group">
-					<label class="filter-label-text">Order Amount</label>
-					<div class="amount-inputs">
-						<div class="amount-input-wrapper">
-							<label for="min-amount" class="input-label">Min</label>
-							<div class="input-with-currency">
-								<span class="currency-prefix">DZD</span>
-								<input
-									id="min-amount"
-									type="number"
-									bind:value={filters.minAmount}
-									class="input-field"
-									placeholder="0"
-								/>
+					<fieldset>
+						<legend class="filter-label-text">Order Amount</legend>
+						<div class="amount-inputs">
+							<div class="amount-input-wrapper">
+								<label for="min-amount" class="input-label">Min</label>
+								<div class="input-with-currency">
+									<span class="currency-prefix">DZD</span>
+									<input
+										id="min-amount"
+										type="number"
+										bind:value={filters.minAmount}
+										class="input-field"
+										placeholder="0"
+									/>
+								</div>
+							</div>
+							<div class="amount-input-wrapper">
+								<label for="max-amount" class="input-label">Max</label>
+								<div class="input-with-currency">
+									<span class="currency-prefix">DZD</span>
+									<input
+										id="max-amount"
+										type="number"
+										bind:value={filters.maxAmount}
+										class="input-field"
+										placeholder="10000"
+									/>
+								</div>
 							</div>
 						</div>
-						<div class="amount-input-wrapper">
-							<label for="max-amount" class="input-label">Max</label>
-							<div class="input-with-currency">
-								<span class="currency-prefix">DZD</span>
-								<input
-									id="max-amount"
-									type="number"
-									bind:value={filters.maxAmount}
-									class="input-field"
-									placeholder="10000"
-								/>
-							</div>
-						</div>
-					</div>
+					</fieldset>
 				</div>
 
 				<!-- Customer Filter -->
