@@ -297,6 +297,20 @@
 		gap: 0.8rem;
 	}
 
+	fieldset {
+		border: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	legend {
+		padding: 0;
+		margin-bottom: 0.4rem;
+	}
+
 	.filter-label-text {
 		font-size: 1.3rem;
 		font-weight: 600;
