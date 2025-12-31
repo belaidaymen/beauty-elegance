@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ProductImage from './ProductImage.svelte';
 
+	export let id: string | undefined = undefined;
 	export let imageUrl: string | undefined = undefined;
 	export let onImageUpload: ((url: string) => void) | undefined = undefined;
 
