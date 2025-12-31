@@ -289,11 +289,14 @@
 		background: linear-gradient(135deg, #fff 0%, #fafbff 100%);
 	}
 
-	.filter-toggle svg {
+	.chevron-icon {
 		transition: transform 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.filter-toggle svg.rotated {
+	.chevron-icon.rotated {
 		transform: rotate(180deg);
 	}
 
