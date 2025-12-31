@@ -168,28 +168,36 @@
 	<!-- Stock Status Summary -->
 	<div class="status-summary">
 		<div class="summary-card optimal">
-			<div class="summary-icon">✅</div>
+			<div class="summary-icon">
+				<CheckCircle size={32} />
+			</div>
 			<div class="summary-content">
 				<p class="summary-label">Optimal Stock</p>
 				<p class="summary-number">{getOptimalCount()}</p>
 			</div>
 		</div>
 		<div class="summary-card warning">
-			<div class="summary-icon">⚠️</div>
+			<div class="summary-icon">
+				<AlertCircle size={32} />
+			</div>
 			<div class="summary-content">
 				<p class="summary-label">Low Stock</p>
 				<p class="summary-number">{getLowStockCount()}</p>
 			</div>
 		</div>
 		<div class="summary-card critical">
-			<div class="summary-icon">🚨</div>
+			<div class="summary-icon">
+				<AlertTriangle size={32} />
+			</div>
 			<div class="summary-content">
 				<p class="summary-label">Critical/Out</p>
 				<p class="summary-number">{getCriticalStockCount()}</p>
 			</div>
 		</div>
 		<div class="summary-card total">
-			<div class="summary-icon">📊</div>
+			<div class="summary-icon">
+				<BarChart3 size={32} />
+			</div>
 			<div class="summary-content">
 				<p class="summary-label">Total Products</p>
 				<p class="summary-number">{stockItems.length}</p>
