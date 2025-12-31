@@ -14,8 +14,8 @@
 </script>
 
 {#if isOpen && product}
-	<div class="modal-overlay" on:click={onClose} role="button" tabindex="0">
-		<div class="modal-content" on:click={(e) => e.stopPropagation()}>
+	<div class="modal-overlay" on:click={onClose}>
+		<div class="modal-content" on:click={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
 			<button class="close-button" on:click={onClose} aria-label="Close preview">
 				<X size={24} />
 			</button>
