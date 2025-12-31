@@ -5,6 +5,7 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import FormInput from '$lib/components/FormInput.svelte';
 	import FormTextarea from '$lib/components/FormTextarea.svelte';
+	import { Plus, Pencil, Trash2 } from 'lucide-svelte';
 
 	interface Product {
 		id: string;
