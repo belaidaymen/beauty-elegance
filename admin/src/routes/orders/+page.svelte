@@ -167,28 +167,36 @@
 	<!-- Summary Stats -->
 	<div class="summary-stats">
 		<div class="stat-box">
-			<div class="stat-icon">📦</div>
+			<div class="stat-icon">
+				<Package size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Total Orders</p>
 				<p class="stat-value">{orders.length}</p>
 			</div>
 		</div>
 		<div class="stat-box">
-			<div class="stat-icon">⏳</div>
+			<div class="stat-icon">
+				<Clock size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Pending</p>
 				<p class="stat-value">{orders.filter((o) => o.status === 'Pending').length}</p>
 			</div>
 		</div>
 		<div class="stat-box">
-			<div class="stat-icon">📫</div>
+			<div class="stat-icon">
+				<RotateCw size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Processing</p>
 				<p class="stat-value">{orders.filter((o) => o.status === 'Processing').length}</p>
 			</div>
 		</div>
 		<div class="stat-box">
-			<div class="stat-icon">✅</div>
+			<div class="stat-icon">
+				<CheckCircle size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Delivered</p>
 				<p class="stat-value">{orders.filter((o) => o.status === 'Delivered').length}</p>
