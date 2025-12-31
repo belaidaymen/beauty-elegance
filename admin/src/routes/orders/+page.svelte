@@ -288,7 +288,9 @@
 			<div class="timeline">
 				{#each trackingSteps as step (step.status)}
 					<div class="timeline-item" class:completed={statuses.indexOf(newStatus) >= statuses.indexOf(step.status)}>
-						<div class="timeline-icon">{getStatusIcon(step.status)}</div>
+						<div class="timeline-icon">
+							<svelte:component this={getStatusIcon(step.status)} size={24} />
+						</div>
 						<div class="timeline-content">
 							<h4 class="timeline-status">{step.status}</h4>
 							<p class="timeline-description">{step.description}</p>
