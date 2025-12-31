@@ -196,7 +196,8 @@
 			<p class="page-subtitle">Create and manage discount campaigns</p>
 		</div>
 		<Button variant="primary" size="large" on:click={openAddModal}>
-			🎯 Create New Promotion
+			<Zap size={20} />
+			Create New Promotion
 		</Button>
 	</div>
 
