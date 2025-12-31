@@ -242,10 +242,12 @@
 			<svelte:fragment slot="actions" let:row>
 				<div class="action-buttons">
 					<Button variant="secondary" size="small" on:click={() => openEditModal(row)}>
-						✏️ Edit
+						<Pencil size={18} />
+						Edit
 					</Button>
 					<Button variant="danger" size="small" on:click={() => handleDeletePromotion(row.id)}>
-						🗑️ Delete
+						<Trash2 size={18} />
+						Delete
 					</Button>
 				</div>
 			</svelte:fragment>
