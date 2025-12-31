@@ -14,30 +14,63 @@
 	$: imageSize = sizeMap[size];
 </script>
 
-<div class="image-wrapper" class:clickable on:click={onClick} style="width: {imageSize}; height: {imageSize};">
-	{#if src}
-		<img {src} {alt} class="product-image" />
-	{:else}
-		<div class="image-placeholder">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="40"
-				height="40"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-				<circle cx="8.5" cy="8.5" r="1.5"></circle>
-				<polyline points="21 15 16 10 5 21"></polyline>
-			</svg>
-			<span>No Image</span>
-		</div>
-	{/if}
-</div>
+{#if clickable}
+	<button
+		class="image-wrapper"
+		class:clickable
+		on:click={onClick}
+		style="width: {imageSize}; height: {imageSize};"
+		type="button"
+	>
+		{#if src}
+			<img {src} {alt} class="product-image" />
+		{:else}
+			<div class="image-placeholder">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="40"
+					height="40"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+					<circle cx="8.5" cy="8.5" r="1.5"></circle>
+					<polyline points="21 15 16 10 5 21"></polyline>
+				</svg>
+				<span>No Image</span>
+			</div>
+		{/if}
+	</button>
+{:else}
+	<div class="image-wrapper" style="width: {imageSize}; height: {imageSize};">
+		{#if src}
+			<img {src} {alt} class="product-image" />
+		{:else}
+			<div class="image-placeholder">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="40"
+					height="40"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+					<circle cx="8.5" cy="8.5" r="1.5"></circle>
+					<polyline points="21 15 16 10 5 21"></polyline>
+				</svg>
+				<span>No Image</span>
+			</div>
+		{/if}
+	</div>
+{/if}
 
 <style>
 	.image-wrapper {
