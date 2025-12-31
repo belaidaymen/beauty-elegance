@@ -108,10 +108,6 @@
 			padding: 1rem 1.2rem;
 		}
 
-		.checkbox-col {
-			width: 4rem;
-		}
-
 		.actions-col {
 			width: 10rem;
 		}
