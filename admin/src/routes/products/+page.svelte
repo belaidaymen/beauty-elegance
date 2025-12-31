@@ -165,7 +165,8 @@
 			<p class="page-subtitle">Manage your product inventory and details</p>
 		</div>
 		<Button variant="primary" size="large" on:click={openAddModal}>
-			➕ Add New Product
+			<Plus size={20} />
+			Add New Product
 		</Button>
 	</div>
 
