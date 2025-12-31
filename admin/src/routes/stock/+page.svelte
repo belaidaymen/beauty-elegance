@@ -4,6 +4,7 @@
 	import DataTable from '$lib/components/DataTable.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import FormInput from '$lib/components/FormInput.svelte';
+	import { CheckCircle, AlertCircle, AlertTriangle, BarChart3, Upload } from 'lucide-svelte';
 
 	interface StockItem {
 		id: string;
