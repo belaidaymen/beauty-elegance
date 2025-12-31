@@ -622,17 +622,17 @@
 				<div class="details-grid">
 					{#if selectedOrder.address}
 						<div class="detail-item full-width">
-							<label>Address</label>
+							<span class="detail-label">Address</span>
 							<p>{selectedOrder.address}</p>
 						</div>
 					{/if}
 					{#if selectedOrder.city || selectedOrder.postalCode}
 						<div class="detail-item">
-							<label>City</label>
+							<span class="detail-label">City</span>
 							<p>{selectedOrder.city || 'N/A'}</p>
 						</div>
 						<div class="detail-item">
-							<label>Postal Code</label>
+							<span class="detail-label">Postal Code</span>
 							<p>{selectedOrder.postalCode || 'N/A'}</p>
 						</div>
 					{/if}
