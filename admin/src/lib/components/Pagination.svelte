@@ -69,7 +69,7 @@
 					class="pagination-number"
 					class:active={item === currentPage}
 					disabled={item === currentPage}
-					on:click={() => handlePageClick(item as number)}
+					on:click={() => handlePageClick(Number(item))}
 				>
 					{item}
 				</button>
