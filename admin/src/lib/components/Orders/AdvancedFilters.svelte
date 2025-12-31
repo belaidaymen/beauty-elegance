@@ -240,13 +240,15 @@
 		font-family: inherit;
 	}
 
-	.chevron {
+	.chevron-wrapper {
 		color: #b37777;
 		transition: transform 0.3s ease;
 		margin-left: auto;
+		display: flex;
+		align-items: center;
 	}
 
-	.chevron.rotated {
+	.chevron-wrapper.rotated {
 		transform: rotate(180deg);
 	}
 
