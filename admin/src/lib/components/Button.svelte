@@ -10,11 +10,11 @@
 </script>
 
 {#if href}
-	<a {href} class="btn {variantClass} {sizeClass}" class:disabled>
+	<a {href} class="btn {variantClass} {sizeClass}" class:disabled on:click>
 		<slot />
 	</a>
 {:else}
-	<button {type} {disabled} class="btn {variantClass} {sizeClass}">
+	<button {type} {disabled} class="btn {variantClass} {sizeClass}" on:click>
 		<slot />
 	</button>
 {/if}
