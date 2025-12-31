@@ -688,8 +688,8 @@
 		<div class="details-section">
 			<h3 class="section-title">Update Order Status</h3>
 			<div class="form-group">
-				<label class="form-label">Current Status: <span class="current-status">{selectedOrder.status}</span></label>
-				<select bind:value={newStatus} class="form-select">
+				<label for="order-status" class="form-label">Current Status: <span class="current-status">{selectedOrder.status}</span></label>
+				<select id="order-status" bind:value={newStatus} class="form-select">
 					{#each statuses as status}
 						<option value={status}>{status}</option>
 					{/each}
