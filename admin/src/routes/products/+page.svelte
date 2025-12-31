@@ -301,11 +301,13 @@
 	};
 
 	const handleDeleteProduct = (id: string) => {
+		console.log('Delete product clicked', id);
 		if (confirm('Are you sure you want to delete this product?')) {
 			products = products.filter((p) => p.id !== id);
 			if (paginatedProducts.length === 1 && currentPage > 1) {
 				currentPage--;
 			}
+			console.log('Product deleted:', id, 'Remaining products:', products.length);
 		}
 	};
 
