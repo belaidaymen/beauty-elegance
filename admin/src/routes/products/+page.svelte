@@ -452,8 +452,8 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Category <span class="required">*</span></label>
-		<select bind:value={formData.category} class="form-select">
+		<label for="category-select-add" class="form-label">Category <span class="required">*</span></label>
+		<select id="category-select-add" bind:value={formData.category} class="form-select">
 			{#each categories as cat}
 				<option value={cat}>{cat}</option>
 			{/each}
@@ -485,8 +485,8 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Status <span class="required">*</span></label>
-		<select bind:value={formData.status} class="form-select">
+		<label for="status-select-add" class="form-label">Status <span class="required">*</span></label>
+		<select id="status-select-add" bind:value={formData.status} class="form-select">
 			<option value="Active">Active</option>
 			<option value="Inactive">Inactive</option>
 			<option value="Low Stock">Low Stock</option>
@@ -501,8 +501,9 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Product Image</label>
+		<label for="image-upload-add" class="form-label">Product Image</label>
 		<ProductImageUpload
+			id="image-upload-add"
 			bind:imageUrl={formData.image}
 			onImageUpload={(url) => (formData.image = url)}
 		/>
@@ -539,8 +540,8 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Category <span class="required">*</span></label>
-		<select bind:value={formData.category} class="form-select">
+		<label for="category-select-edit" class="form-label">Category <span class="required">*</span></label>
+		<select id="category-select-edit" bind:value={formData.category} class="form-select">
 			{#each categories as cat}
 				<option value={cat}>{cat}</option>
 			{/each}
@@ -572,8 +573,8 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Status <span class="required">*</span></label>
-		<select bind:value={formData.status} class="form-select">
+		<label for="status-select-edit" class="form-label">Status <span class="required">*</span></label>
+		<select id="status-select-edit" bind:value={formData.status} class="form-select">
 			<option value="Active">Active</option>
 			<option value="Inactive">Inactive</option>
 			<option value="Low Stock">Low Stock</option>
@@ -588,8 +589,9 @@
 	/>
 
 	<div class="form-group">
-		<label class="form-label">Product Image</label>
+		<label for="image-upload-edit" class="form-label">Product Image</label>
 		<ProductImageUpload
+			id="image-upload-edit"
 			bind:imageUrl={formData.image}
 			onImageUpload={(url) => (formData.image = url)}
 		/>
