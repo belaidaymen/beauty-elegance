@@ -3,38 +3,12 @@
 	export let data: Array<Record<string, any>> = [];
 	export let striped: boolean = true;
 	export let hoverable: boolean = true;
-
-	let selectedRows: Set<number> = new Set();
-
-	const toggleRowSelection = (index: number) => {
-		if (selectedRows.has(index)) {
-			selectedRows.delete(index);
-		} else {
-			selectedRows.add(index);
-		}
-		selectedRows = selectedRows;
-	};
-
-	const toggleAllRows = () => {
-		if (selectedRows.size === data.length) {
-			selectedRows.clear();
-		} else {
-			selectedRows = new Set(data.map((_, i) => i));
-		}
-	};
 </script>
 
 <div class="table-container">
 	<table class="data-table" class:striped class:hoverable>
 		<thead>
 			<tr>
-				<th class="checkbox-col">
-					<input
-						type="checkbox"
-						checked={selectedRows.size === data.length && data.length > 0}
-						on:change={toggleAllRows}
-					/>
-				</th>
 				{#each columns as col (col.key)}
 					<th style="width: {col.width || 'auto'}">{col.label}</th>
 				{/each}
@@ -43,14 +17,7 @@
 		</thead>
 		<tbody>
 			{#each data as row, idx (idx)}
-				<tr class:selected={selectedRows.has(idx)}>
-					<td class="checkbox-col">
-						<input
-							type="checkbox"
-							checked={selectedRows.has(idx)}
-							on:change={() => toggleRowSelection(idx)}
-						/>
-					</td>
+				<tr>
 					{#each columns as col (col.key)}
 						<td>
 							<slot name="cell" {row} {col} {idx}>
@@ -119,19 +86,6 @@
 		background: #f9f8f8;
 	}
 
-	.data-table.hoverable tbody tr.selected {
-		background: rgba(179, 119, 119, 0.12);
-	}
-
-	.checkbox-col {
-		width: 5rem;
-		text-align: center;
-	}
-
-	.checkbox-col input {
-		cursor: pointer;
-	}
-
 	.actions-col {
 		width: 13rem;
 		text-align: center;
@@ -144,13 +98,6 @@
 		font-size: 1.5rem;
 	}
 
-	input[type='checkbox'] {
-		cursor: pointer;
-		width: 1.8rem;
-		height: 1.8rem;
-		accent-color: #b37777;
-	}
-
 	@media (max-width: 768px) {
 		.data-table {
 			font-size: 1.2rem;
@@ -159,10 +106,6 @@
 		.data-table th,
 		.data-table td {
 			padding: 1rem 1.2rem;
-		}
-
-		.checkbox-col {
-			width: 4rem;
 		}
 
 		.actions-col {
