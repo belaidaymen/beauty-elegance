@@ -115,6 +115,8 @@
 		cursor: pointer;
 		transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 		background: linear-gradient(135deg, rgba(245, 240, 237, 0.4) 0%, rgba(250, 248, 246, 0.4) 100%);
+		width: 100%;
+		display: block;
 	}
 
 	.upload-area:hover {
