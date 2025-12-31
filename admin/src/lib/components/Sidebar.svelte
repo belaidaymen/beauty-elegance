@@ -32,8 +32,13 @@
 
 <aside class="sidebar" class:mobile-open={isMobileOpen}>
 	<div class="sidebar-header">
-		<h2 class="brand-title">Beaute & Elegance</h2>
-		<p class="brand-subtitle">Admin Panel</p>
+		<div class="brand-container">
+			<img src={logo} alt="Beaute & Elegance Logo" class="brand-logo" />
+			<div class="brand-text">
+				<h2 class="brand-title">Beaute & Elegance</h2>
+				<p class="brand-subtitle">Admin Panel</p>
+			</div>
+		</div>
 	</div>
 
 	<nav class="sidebar-nav">
