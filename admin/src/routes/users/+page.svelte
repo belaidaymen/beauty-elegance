@@ -120,21 +120,27 @@
 	<!-- User Stats -->
 	<div class="user-stats">
 		<div class="stat-card">
-			<div class="stat-icon">👥</div>
+			<div class="stat-icon">
+				<Users size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Total Users</p>
 				<p class="stat-value">{users.length}</p>
 			</div>
 		</div>
 		<div class="stat-card">
-			<div class="stat-icon">✅</div>
+			<div class="stat-icon">
+				<CheckCircle size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Active Users</p>
 				<p class="stat-value">{getActiveUserCount()}</p>
 			</div>
 		</div>
 		<div class="stat-card">
-			<div class="stat-icon">💰</div>
+			<div class="stat-icon">
+				<DollarSign size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Total Revenue</p>
 				<p class="stat-value">
@@ -143,7 +149,9 @@
 			</div>
 		</div>
 		<div class="stat-card">
-			<div class="stat-icon">📦</div>
+			<div class="stat-icon">
+				<ShoppingBag size={32} />
+			</div>
 			<div class="stat-info">
 				<p class="stat-label">Avg. Orders/User</p>
 				<p class="stat-value">{getAverageOrders()}</p>
