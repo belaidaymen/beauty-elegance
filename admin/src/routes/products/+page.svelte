@@ -231,6 +231,7 @@
 	};
 
 	const openPreviewModal = (product: Product) => {
+		console.log('Preview modal opened for product:', product);
 		previewProduct = product;
 		showPreviewModal = true;
 	};
