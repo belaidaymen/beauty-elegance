@@ -67,8 +67,8 @@
 <div class="filters-container">
 	<button
 		class="filters-toggle"
-		on:click={() => (isExpanded = !isExpanded)}
 		class:has-active-filters={getActiveFilterCount() > 0}
+		on:click={() => (isExpanded = !isExpanded)}
 	>
 		<svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 			<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
@@ -77,7 +77,9 @@
 		{#if getActiveFilterCount() > 0}
 			<span class="filter-badge">{getActiveFilterCount()}</span>
 		{/if}
-		<ChevronDown size={18} class="chevron" class:rotated={isExpanded} />
+		<div class="chevron-wrapper" class:rotated={isExpanded}>
+			<ChevronDown size={18} />
+		</div>
 	</button>
 
 	{#if isExpanded}
