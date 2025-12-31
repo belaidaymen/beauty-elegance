@@ -296,8 +296,21 @@
 			width: 80vw;
 		}
 
+		.brand-container {
+			gap: 0.8rem;
+		}
+
+		.brand-logo {
+			width: 4.4rem;
+			height: 4.4rem;
+		}
+
 		.brand-title {
-			font-size: 2.2rem;
+			font-size: 1.5rem;
+		}
+
+		.brand-subtitle {
+			font-size: 0.9rem;
 		}
 
 		.nav-link {
