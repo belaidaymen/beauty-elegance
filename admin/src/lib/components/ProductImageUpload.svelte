@@ -54,14 +54,13 @@
 </script>
 
 <div class="upload-container">
-	<div
+	<button
+		type="button"
 		class="upload-area"
 		class:dragging={isDragging}
 		on:dragover={handleDragOver}
 		on:dragleave={handleDragLeave}
 		on:drop={handleDrop}
-		role="button"
-		tabindex="0"
 		on:click={() => fileInput?.click()}
 	>
 		{#if imageUrl}
