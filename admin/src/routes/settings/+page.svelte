@@ -4,6 +4,7 @@
 	import FormInput from '$lib/components/FormInput.svelte';
 	import FormTextarea from '$lib/components/FormTextarea.svelte';
 	import { page } from '$app/stores';
+	import { User, Store, Bell, Lock } from 'lucide-svelte';
 
 	let activeTab = 'profile';
 	let saveMessage = '';
