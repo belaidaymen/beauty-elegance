@@ -528,11 +528,11 @@
 							{row.status}
 						</span>
 						<select
-							bind:value={row.status}
-							on:change={() => {
+							value={row.status}
+							on:change={(e) => {
 								const order = allOrders.find((o) => o.id === row.id);
 								if (order) {
-									order.status = row.status;
+									order.status = e.currentTarget.value;
 									allOrders = allOrders;
 								}
 							}}
