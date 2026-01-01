@@ -50,7 +50,7 @@
 </script>
 
 {#if isOpen}
-	<div class="modal-overlay" on:click={onClose}>
+	<div class="modal-overlay" role="button" tabindex="0" on:click={onClose} on:keydown={(e) => e.key === 'Escape' && onClose?.()}>
 		<div class="modal-content" on:click={(e) => e.stopPropagation()}>
 			<div class="modal-header">
 				<h2 class="modal-title">Edit User Information</h2>
