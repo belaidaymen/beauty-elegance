@@ -494,13 +494,6 @@
 		border: 1px solid #e8e0db;
 	}
 
-	.info-item svg,
-	.activity-item svg {
-		color: #b37777;
-		flex-shrink: 0;
-		margin-top: 0.2rem;
-	}
-
 	.info-item div,
 	.activity-item div {
 		flex: 1;
