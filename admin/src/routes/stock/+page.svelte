@@ -2,9 +2,12 @@
 	import Card from '$lib/components/Card.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import DataTable from '$lib/components/DataTable.svelte';
-	import Modal from '$lib/components/Modal.svelte';
-	import FormInput from '$lib/components/FormInput.svelte';
-	import { CheckCircle, AlertCircle, AlertTriangle, BarChart3, Upload } from 'lucide-svelte';
+	import { CheckCircle, AlertCircle, AlertTriangle, BarChart3, Upload, Bell, TrendingDown } from 'lucide-svelte';
+	import AdvancedStockFilters from '$lib/components/Stock/AdvancedStockFilters.svelte';
+	import StockDetailsModal from '$lib/components/Stock/StockDetailsModal.svelte';
+	import StockAlertModal from '$lib/components/Stock/StockAlertModal.svelte';
+	import UpcomingProducts from '$lib/components/Stock/UpcomingProducts.svelte';
+	import StockAnalytics from '$lib/components/Stock/StockAnalytics.svelte';
 
 	interface StockItem {
 		id: string;
@@ -16,6 +19,13 @@
 		maxStock: number;
 		status: string;
 		lastRestocked: string;
+		price: number;
+		alertEnabled: boolean;
+		alertLevel: number;
+		notificationEmail: string;
+		notificationType: string;
+		stockHistory: any[];
+		allowNegativeStock: boolean;
 	}
 
 	let stockItems: StockItem[] = [
@@ -28,7 +38,22 @@
 			minStock: 20,
 			maxStock: 100,
 			status: 'Optimal',
-			lastRestocked: '2024-01-10'
+			lastRestocked: '2024-01-10',
+			price: 2500,
+			alertEnabled: true,
+			alertLevel: 15,
+			notificationEmail: 'admin@example.com',
+			notificationType: 'email',
+			stockHistory: [
+				{
+					type: 'add',
+					quantity: 20,
+					resultStock: 45,
+					timestamp: '2024-01-10',
+					notes: 'Restock from supplier'
+				}
+			],
+			allowNegativeStock: false
 		},
 		{
 			id: '2',
@@ -39,7 +64,22 @@
 			minStock: 15,
 			maxStock: 80,
 			status: 'Low',
-			lastRestocked: '2024-01-05'
+			lastRestocked: '2024-01-05',
+			price: 1800,
+			alertEnabled: true,
+			alertLevel: 10,
+			notificationEmail: 'admin@example.com',
+			notificationType: 'email',
+			stockHistory: [
+				{
+					type: 'subtract',
+					quantity: 7,
+					resultStock: 8,
+					timestamp: '2024-01-08',
+					notes: 'Sales'
+				}
+			],
+			allowNegativeStock: false
 		},
 		{
 			id: '3',
@@ -50,7 +90,14 @@
 			minStock: 10,
 			maxStock: 60,
 			status: 'Optimal',
-			lastRestocked: '2024-01-12'
+			lastRestocked: '2024-01-12',
+			price: 3200,
+			alertEnabled: true,
+			alertLevel: 8,
+			notificationEmail: 'admin@example.com',
+			notificationType: 'email',
+			stockHistory: [],
+			allowNegativeStock: false
 		},
 		{
 			id: '4',
@@ -61,7 +108,14 @@
 			minStock: 15,
 			maxStock: 75,
 			status: 'Critical',
-			lastRestocked: '2024-01-01'
+			lastRestocked: '2024-01-01',
+			price: 1500,
+			alertEnabled: true,
+			alertLevel: 12,
+			notificationEmail: 'admin@example.com',
+			notificationType: 'email',
+			stockHistory: [],
+			allowNegativeStock: false
 		},
 		{
 			id: '5',
@@ -72,7 +126,14 @@
 			minStock: 20,
 			maxStock: 150,
 			status: 'Out of Stock',
-			lastRestocked: '2023-12-20'
+			lastRestocked: '2023-12-20',
+			price: 450,
+			alertEnabled: true,
+			alertLevel: 15,
+			notificationEmail: 'admin@example.com',
+			notificationType: 'email',
+			stockHistory: [],
+			allowNegativeStock: false
 		},
 		{
 			id: '6',
@@ -83,13 +144,46 @@
 			minStock: 25,
 			maxStock: 120,
 			status: 'Optimal',
-			lastRestocked: '2024-01-08'
+			lastRestocked: '2024-01-08',
+			price: 2800,
+			alertEnabled: false,
+			alertLevel: 20,
+			notificationEmail: '',
+			notificationType: 'email',
+			stockHistory: [],
+			allowNegativeStock: false
 		}
 	];
 
-	let showRestockModal = false;
+	let upcomingProducts: any[] = [
+		{
+			id: 'u1',
+			name: 'Premium Eye Cream',
+			sku: 'EYE-CRM-001',
+			category: 'Visage',
+			expectedQuantity: 50,
+			expectedDate: '2024-02-10',
+			supplier: 'European Beauty Co',
+			notes: 'New product line launch',
+			status: 'confirmed',
+			createdAt: '2024-01-15'
+		}
+	];
+
+	let showDetailsModal = false;
+	let showAlertModal = false;
 	let selectedItem: StockItem | null = null;
-	let restockQuantity = 0;
+	let filters = {
+		search: '',
+		category: '',
+		stockStatus: 'all',
+		alertStatus: 'all',
+		minStock: 0,
+		maxStock: 1000,
+		sortBy: 'critical-first'
+	};
+
+	const categories = ['Maquillage', 'Cheveux', 'Visage', 'Corps & Bain', 'Deo & Stick', 'Promotion'];
 
 	const columns = [
 		{ key: 'name', label: 'Product Name', width: '22%' },
@@ -98,37 +192,144 @@
 		{ key: 'currentStock', label: 'Current', width: '10%' },
 		{ key: 'minStock', label: 'Min Level', width: '10%' },
 		{ key: 'status', label: 'Status', width: '12%' },
-		{ key: 'lastRestocked', label: 'Last Restocked', width: '12%' }
+		{ key: 'alertLevel', label: 'Alert Lvl', width: '10%' }
 	];
 
-	const openRestockModal = (item: StockItem) => {
+	$: filteredItems = stockItems.filter((item) => {
+		const matchesSearch =
+			item.name.toLowerCase().includes(filters.search.toLowerCase()) ||
+			item.sku.toLowerCase().includes(filters.search.toLowerCase());
+
+		const matchesCategory = !filters.category || item.category === filters.category;
+
+		const matchesStock = (() => {
+			switch (filters.stockStatus) {
+				case 'optimal':
+					return item.currentStock > item.minStock * 1.5;
+				case 'low':
+					return item.currentStock > item.minStock && item.currentStock <= item.minStock * 1.5;
+				case 'critical':
+					return item.currentStock > 0 && item.currentStock <= item.minStock;
+				case 'out':
+					return item.currentStock === 0;
+				case 'upcoming':
+					return item.currentStock < 0;
+				default:
+					return true;
+			}
+		})();
+
+		const matchesAlert = (() => {
+			switch (filters.alertStatus) {
+				case 'active':
+					return item.alertEnabled;
+				case 'inactive':
+					return !item.alertEnabled;
+				case 'triggered':
+					return item.alertEnabled && item.currentStock <= item.alertLevel;
+				default:
+					return true;
+			}
+		})();
+
+		const matchesRange =
+			item.currentStock >= filters.minStock && item.currentStock <= filters.maxStock;
+
+		return matchesSearch && matchesCategory && matchesStock && matchesAlert && matchesRange;
+	});
+
+	$: sortedItems = [...filteredItems].sort((a, b) => {
+		switch (filters.sortBy) {
+			case 'critical-first':
+				const statusOrder = {
+					'Out of Stock': 0,
+					'Critical': 1,
+					'Low': 2,
+					'Optimal': 3
+				};
+				return (statusOrder[a.status] ?? 4) - (statusOrder[b.status] ?? 4);
+			case 'low-first':
+				return a.currentStock - b.currentStock;
+			case 'optimal-first':
+				return b.currentStock - a.currentStock;
+			case 'name-asc':
+				return a.name.localeCompare(b.name);
+			case 'name-desc':
+				return b.name.localeCompare(a.name);
+			case 'last-restocked':
+				return new Date(b.lastRestocked).getTime() - new Date(a.lastRestocked).getTime();
+			default:
+				return 0;
+		}
+	});
+
+	const openDetailsModal = (item: StockItem) => {
 		selectedItem = item;
-		restockQuantity = item.maxStock - item.currentStock;
-		showRestockModal = true;
+		showDetailsModal = true;
 	};
 
-	const handleRestock = () => {
-		if (selectedItem && restockQuantity > 0) {
-			stockItems = stockItems.map((item) => {
-				if (item.id === selectedItem?.id) {
-					const newStock = item.currentStock + restockQuantity;
-					const status =
-						newStock <= item.minStock
-							? 'Critical'
-							: newStock <= item.minStock * 1.5
-								? 'Low'
-								: 'Optimal';
-					return {
-						...item,
-						currentStock: newStock,
-						status,
-						lastRestocked: new Date().toISOString().split('T')[0]
-					};
-				}
-				return item;
-			});
-			showRestockModal = false;
-		}
+	const openAlertModal = (item: StockItem) => {
+		selectedItem = item;
+		showAlertModal = true;
+	};
+
+	const handleStockUpdate = (adjustmentData: any) => {
+		stockItems = stockItems.map((item) => {
+			if (item.id === adjustmentData.productId) {
+				const newStatus = getStatus(adjustmentData.newStock, item.minStock, item.maxStock);
+				return {
+					...item,
+					currentStock: adjustmentData.newStock,
+					status: newStatus,
+					lastRestocked: new Date().toISOString().split('T')[0],
+					stockHistory: [
+						{
+							type: adjustmentData.adjustmentType,
+							quantity: adjustmentData.quantity,
+							resultStock: adjustmentData.newStock,
+							timestamp: adjustmentData.timestamp,
+							notes: adjustmentData.notes
+						},
+						...item.stockHistory
+					]
+				};
+			}
+			return item;
+		});
+		showDetailsModal = false;
+		selectedItem = null;
+	};
+
+	const handleAlertSave = (alertData: any) => {
+		stockItems = stockItems.map((item) => {
+			if (item.id === selectedItem?.id) {
+				return {
+					...item,
+					alertEnabled: alertData.enabled,
+					alertLevel: alertData.alertLevel,
+					notificationEmail: alertData.notificationEmail,
+					notificationType: alertData.notificationType
+				};
+			}
+			return item;
+		});
+		showAlertModal = false;
+		selectedItem = null;
+	};
+
+	const handleAddUpcoming = (product: any) => {
+		upcomingProducts = [...upcomingProducts, product];
+	};
+
+	const handleRemoveUpcoming = (id: string) => {
+		upcomingProducts = upcomingProducts.filter((p) => p.id !== id);
+	};
+
+	const getStatus = (current: number, min: number, max: number) => {
+		if (current === 0) return 'Out of Stock';
+		if (current <= min) return 'Critical';
+		if (current <= min * 1.5) return 'Low';
+		return 'Optimal';
 	};
 
 	const getStatusColor = (status: string) => {
@@ -155,13 +356,19 @@
 	const getCriticalStockCount = () =>
 		stockItems.filter((item) => item.status === 'Critical' || item.status === 'Out of Stock').length;
 	const getOptimalCount = () => stockItems.filter((item) => item.status === 'Optimal').length;
+	const getAlertsTriggered = () =>
+		stockItems.filter((item) => item.alertEnabled && item.currentStock <= item.alertLevel).length;
+
+	const handleFilterChange = (newFilters: any) => {
+		filters = newFilters;
+	};
 </script>
 
 <div class="stock-container">
 	<div class="page-header">
 		<div>
 			<h1 class="page-title">Stock Management</h1>
-			<p class="page-subtitle">Monitor and manage inventory levels</p>
+			<p class="page-subtitle">Advanced inventory control and analytics</p>
 		</div>
 	</div>
 
@@ -194,24 +401,38 @@
 				<p class="summary-number">{getCriticalStockCount()}</p>
 			</div>
 		</div>
-		<div class="summary-card total">
+		<div class="summary-card alerts">
 			<div class="summary-icon">
-				<BarChart3 size={32} />
+				<Bell size={32} />
 			</div>
 			<div class="summary-content">
-				<p class="summary-label">Total Products</p>
-				<p class="summary-number">{stockItems.length}</p>
+				<p class="summary-label">Alerts Triggered</p>
+				<p class="summary-number">{getAlertsTriggered()}</p>
 			</div>
 		</div>
 	</div>
 
+	<!-- Analytics Dashboard -->
+	<StockAnalytics products={stockItems} />
+
+	<!-- Advanced Filters -->
+	<AdvancedStockFilters
+		{categories}
+		{filters}
+		onFilterChange={handleFilterChange}
+	/>
+
 	<!-- Stock Levels Table -->
-	<Card title="Inventory Levels" subtitle="Real-time stock information">
-		<DataTable columns={columns} data={stockItems}>
+	<Card title="Inventory Management" subtitle="Real-time stock information and controls">
+		<DataTable columns={columns} data={sortedItems}>
 			<svelte:fragment slot="cell" let:row let:col>
 				{#if col.key === 'status'}
 					<span class="status-badge status-{row.status.toLowerCase().replace(/\s+/g, '-')}">
 						{row.status}
+					</span>
+				{:else if col.key === 'alertLevel'}
+					<span class="alert-badge" class:active={row.alertEnabled} class:triggered={row.currentStock <= row.alertLevel}>
+						{row.alertEnabled ? row.alertLevel : '—'}
 					</span>
 				{:else}
 					{row[col.key]}
@@ -219,9 +440,23 @@
 			</svelte:fragment>
 			<svelte:fragment slot="actions" let:row>
 				<div class="action-buttons">
-					<Button variant="primary" size="small" on:click={() => openRestockModal(row)}>
+					<Button
+						variant="primary"
+						size="small"
+						on:click={() => openDetailsModal(row)}
+						title="Adjust stock quantity"
+					>
 						<Upload size={18} />
-						Restock
+						Adjust
+					</Button>
+					<Button
+						variant="secondary"
+						size="small"
+						on:click={() => openAlertModal(row)}
+						title="Manage stock alerts"
+					>
+						<Bell size={18} />
+						Alert
 					</Button>
 				</div>
 			</svelte:fragment>
@@ -229,12 +464,15 @@
 	</Card>
 
 	<!-- Stock Level Visualization -->
-	<Card title="Stock Level Overview" subtitle="Visual representation of inventory">
+	<Card title="Stock Level Overview" subtitle="Visual inventory status">
 		<div class="stock-levels-list">
-			{#each stockItems as item (item.id)}
+			{#each sortedItems as item (item.id)}
 				<div class="stock-item-viz">
 					<div class="item-header">
-						<h4 class="item-name">{item.name}</h4>
+						<div class="item-info">
+							<h4 class="item-name">{item.name}</h4>
+							<p class="item-sku">SKU: {item.sku}</p>
+						</div>
 						<span class="item-current">{item.currentStock} / {item.maxStock}</span>
 					</div>
 					<div class="stock-bar">
@@ -244,8 +482,16 @@
 						></div>
 					</div>
 					<div class="item-footer">
-						<span class="min-max">Min: {item.minStock} | Max: {item.maxStock}</span>
-						<span class="status-label" class:low={item.status === 'Low'} class:critical={item.status === 'Critical' || item.status === 'Out of Stock'}>
+						<div class="footer-left">
+							<span class="min-max">Min: {item.minStock} | Max: {item.maxStock}</span>
+							{#if item.alertEnabled}
+								<span class="alert-indicator" class:triggered={item.currentStock <= item.alertLevel}>
+									<Bell size={14} />
+									Alert: {item.alertLevel}
+								</span>
+							{/if}
+						</div>
+						<span class="status-label" class:optimal={item.status === 'Optimal'} class:low={item.status === 'Low'} class:critical={item.status === 'Critical' || item.status === 'Out of Stock'}>
 							{item.status}
 						</span>
 					</div>
@@ -253,60 +499,36 @@
 			{/each}
 		</div>
 	</Card>
+
+	<!-- Upcoming Products -->
+	<UpcomingProducts
+		{upcomingProducts}
+		onAddUpcoming={handleAddUpcoming}
+		onRemoveUpcoming={handleRemoveUpcoming}
+	/>
 </div>
 
-<!-- Restock Modal -->
-<Modal
-	isOpen={showRestockModal}
-	title="Restock Product"
-	size="medium"
-	onClose={() => (showRestockModal = false)}
->
-	{#if selectedItem}
-		<div class="restock-content">
-			<div class="product-info">
-				<h4 class="info-title">Product</h4>
-				<p class="info-value">{selectedItem.name}</p>
-			</div>
+<!-- Stock Details Modal -->
+<StockDetailsModal
+	isOpen={showDetailsModal}
+	product={selectedItem}
+	onClose={() => {
+		showDetailsModal = false;
+		selectedItem = null;
+	}}
+	onStockUpdate={handleStockUpdate}
+/>
 
-			<div class="stock-info">
-				<div class="info-item">
-					<h4 class="info-title">Current Stock</h4>
-					<p class="info-value">{selectedItem.currentStock}</p>
-				</div>
-				<div class="info-item">
-					<h4 class="info-title">Maximum Stock</h4>
-					<p class="info-value">{selectedItem.maxStock}</p>
-				</div>
-			</div>
-
-			<FormInput
-				label="Quantity to Add"
-				inputType="number"
-				placeholder="0"
-				bind:value={restockQuantity}
-				required
-			/>
-
-			<div class="calculation">
-				<p>New Stock Level: <span class="calc-result">{selectedItem.currentStock + restockQuantity}</span></p>
-			</div>
-		</div>
-	{/if}
-
-	<svelte:fragment slot="footer">
-		{#if selectedItem}
-			<Button variant="secondary" on:click={() => (showRestockModal = false)}>Cancel</Button>
-			<Button
-				variant="primary"
-				disabled={restockQuantity <= 0}
-				on:click={handleRestock}
-			>
-				Confirm Restock
-			</Button>
-		{/if}
-	</svelte:fragment>
-</Modal>
+<!-- Stock Alert Modal -->
+<StockAlertModal
+	isOpen={showAlertModal}
+	product={selectedItem}
+	onClose={() => {
+		showAlertModal = false;
+		selectedItem = null;
+	}}
+	onSave={handleAlertSave}
+/>
 
 <style>
 	.stock-container {
@@ -320,7 +542,7 @@
 	.page-header {
 		margin-bottom: 3.5rem;
 		padding-bottom: 2rem;
-		border-bottom: 2px solid var(--primary-lighter);
+		border-bottom: 2px solid var(--primary-lighter, #f0d9d9);
 	}
 
 	.page-title {
@@ -380,12 +602,28 @@
 		border-left-color: #e74c3c;
 	}
 
-	.summary-card.total {
-		border-left-color: #b37777;
+	.summary-card.alerts {
+		border-left-color: #3498db;
 	}
 
 	.summary-icon {
 		font-size: 3.2rem;
+	}
+
+	.summary-card.optimal .summary-icon {
+		color: #27ae60;
+	}
+
+	.summary-card.warning .summary-icon {
+		color: #f39c12;
+	}
+
+	.summary-card.critical .summary-icon {
+		color: #e74c3c;
+	}
+
+	.summary-card.alerts .summary-icon {
+		color: #3498db;
 	}
 
 	.summary-content {
@@ -439,6 +677,31 @@
 		color: #e74c3c;
 	}
 
+	.alert-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.4rem 0.8rem;
+		border-radius: 0.4rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		background: #f9f8f8;
+		color: #999;
+		border: 1px solid #e8e0db;
+	}
+
+	.alert-badge.active {
+		background: rgba(243, 156, 18, 0.12);
+		color: #b87c0f;
+		border-color: rgba(243, 156, 18, 0.3);
+	}
+
+	.alert-badge.triggered {
+		background: rgba(231, 76, 60, 0.12);
+		color: #e74c3c;
+		border-color: rgba(231, 76, 60, 0.3);
+	}
+
 	.stock-levels-list {
 		display: flex;
 		flex-direction: column;
@@ -452,6 +715,13 @@
 		padding: 1.5rem;
 		background: #f9f8f8;
 		border-radius: 0.6rem;
+		border: 1px solid #e8e0db;
+		transition: all 0.2s ease;
+	}
+
+	.stock-item-viz:hover {
+		border-color: #b37777;
+		background: #fff;
 	}
 
 	.item-header {
@@ -460,16 +730,28 @@
 		align-items: center;
 	}
 
+	.item-info {
+		flex: 1;
+	}
+
 	.item-name {
 		font-size: 1.4rem;
 		font-weight: 600;
 		color: #333;
+		margin: 0;
+	}
+
+	.item-sku {
+		font-size: 1.2rem;
+		color: #999;
+		margin: 0.3rem 0 0 0;
 	}
 
 	.item-current {
 		font-size: 1.3rem;
 		font-weight: 600;
 		color: #b37777;
+		white-space: nowrap;
 	}
 
 	.stock-bar {
@@ -491,6 +773,15 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: 1.1rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.footer-left {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
 	}
 
 	.min-max {
@@ -498,79 +789,44 @@
 		font-weight: 500;
 	}
 
+	.alert-indicator {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.1rem;
+		color: #f39c12;
+		font-weight: 600;
+		padding: 0.3rem 0.8rem;
+		background: rgba(243, 156, 18, 0.1);
+		border-radius: 0.3rem;
+	}
+
+	.alert-indicator.triggered {
+		color: #e74c3c;
+		background: rgba(231, 76, 60, 0.1);
+	}
+
 	.status-label {
 		font-weight: 600;
 		color: #27ae60;
+		padding: 0.3rem 0.8rem;
+		background: rgba(39, 174, 96, 0.1);
+		border-radius: 0.3rem;
 	}
 
 	.status-label.low {
 		color: #f39c12;
+		background: rgba(243, 156, 18, 0.1);
 	}
 
 	.status-label.critical {
 		color: #e74c3c;
+		background: rgba(231, 76, 60, 0.1);
 	}
 
 	.action-buttons {
 		display: flex;
 		gap: 0.5rem;
-	}
-
-	.restock-content {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.product-info {
-		padding: 1.2rem;
-		background: #f9f8f8;
-		border-radius: 0.6rem;
-	}
-
-	.info-title {
-		font-size: 1.2rem;
-		color: #888;
-		text-transform: uppercase;
-		letter-spacing: 0.05rem;
-		font-weight: 600;
-		margin-bottom: 0.5rem;
-	}
-
-	.info-value {
-		font-size: 1.6rem;
-		color: #333;
-		font-weight: 600;
-	}
-
-	.stock-info {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1.5rem;
-	}
-
-	.info-item {
-		padding: 1.2rem;
-		background: #f9f8f8;
-		border-radius: 0.6rem;
-	}
-
-	.calculation {
-		padding: 1rem;
-		background: rgba(179, 119, 119, 0.1);
-		border-left: 3px solid #b37777;
-		border-radius: 0.4rem;
-	}
-
-	.calculation p {
-		font-size: 1.4rem;
-		font-weight: 600;
-		color: #333;
-	}
-
-	.calc-result {
-		color: #b37777;
-		font-weight: 700;
 	}
 
 	@media (max-width: 768px) {
@@ -584,14 +840,21 @@
 
 		.status-summary {
 			grid-template-columns: repeat(2, 1fr);
-		}
-
-		.stock-info {
-			grid-template-columns: 1fr;
+			gap: 1.5rem;
 		}
 
 		.action-buttons {
 			flex-direction: column;
+		}
+
+		.item-footer {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.footer-left {
+			flex-direction: column;
+			gap: 0.5rem;
 		}
 	}
 
