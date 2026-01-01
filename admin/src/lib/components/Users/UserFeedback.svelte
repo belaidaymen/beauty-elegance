@@ -10,7 +10,7 @@
 
 	const getAverageRating = () => {
 		if (feedback.length === 0) return 0;
-		return (feedback.reduce((sum, f) => sum + f.rating, 0) / feedback.length).toFixed(1);
+		return Math.round((feedback.reduce((sum, f) => sum + f.rating, 0) / feedback.length) * 10) / 10;
 	};
 
 	const getRatingCount = (rating: number) => {
