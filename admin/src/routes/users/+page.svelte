@@ -349,7 +349,7 @@
 	</div>
 
 	<!-- Analytics Dashboard -->
-	<UserAnalytics {users: sortedUsers} />
+	<UserAnalytics users={sortedUsers} />
 
 	<!-- Advanced Filters -->
 	<AdvancedUserFilters
