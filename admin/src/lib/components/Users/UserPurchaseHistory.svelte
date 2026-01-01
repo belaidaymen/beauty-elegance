@@ -145,11 +145,6 @@
 		color: #999;
 	}
 
-	.empty-state svg {
-		margin-bottom: 1rem;
-		color: #ddd;
-	}
-
 	.empty-state p {
 		font-size: 1.4rem;
 		margin: 0;
