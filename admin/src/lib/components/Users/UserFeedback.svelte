@@ -40,7 +40,7 @@
 			<div class="rating-display">
 				<span class="rating-value">{averageRating}</span>
 				<div class="stars-inline">
-					{#each getRatingStars(Math.round(parseFloat(averageRating as string))) as filled}
+					{#each getRatingStars(Math.round(averageRating)) as filled}
 						<Star size={16} fill={filled ? '#f39c12' : 'none'} color={filled ? '#f39c12' : '#ddd'} />
 					{/each}
 				</div>
